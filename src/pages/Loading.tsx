@@ -1,18 +1,37 @@
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuthRedirect } from "../hooks/useAuthRedirect";
+import { useUserStore } from "../stores/useUserStore";
+import {
+  getLocalStorageItem,
+  setLocalStorageItem,
+} from "../utils/localstorage";
+import type { User } from "../types";
 
 function Loading() {
   const navigate = useNavigate();
   const [startZoom, setStartZoom] = useState(false);
+  const { user, setUser } = useUserStore();
 
-  useAuthRedirect();
+  useEffect(() => {
+    if (!user) {
+      const localUser = getLocalStorageItem<User>("user");
+
+      if (localUser) {
+        setLocalStorageItem("user", localUser);
+        setUser(localUser);
+      }
+    }
+  }, []);
 
   const handleClick = () => {
     if (!startZoom) {
       setStartZoom(true);
-      setTimeout(() => navigate("/overview"), 1000); // Navigate after zoom
+      if (user) {
+        setTimeout(() => navigate("/home"), 1000); // Navigate after zoom
+      } else {
+        setTimeout(() => navigate("/overview"), 1000); // Navigate after zoom
+      }
     }
   };
 

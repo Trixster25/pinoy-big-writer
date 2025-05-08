@@ -7,9 +7,9 @@ function Games() {
   const [hovered, setHovered] = useState<number | null>(null);
 
   const cards = [
-    { path: "/capitalization", src: "/doors/door1", alt: "Room 1" },
-    { path: "/punctuation", src: "/doors/door2", alt: "Room 2" },
-    { path: "/spelling", src: "/doors/door3", alt: "Room 3" },
+    { path: "/games/capitalization", src: "/doors/door1", alt: "Room 1" },
+    { path: "/games/punctuation", src: "/doors/door2", alt: "Room 2" },
+    { path: "/games/spelling", src: "/doors/door3", alt: "Room 3" },
   ];
 
   return (

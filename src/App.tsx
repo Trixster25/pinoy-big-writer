@@ -11,6 +11,9 @@ import Achievements from "./pages/Achievements";
 import Games from "./pages/Games";
 import NotFound from "./pages/NotFound";
 import PrivateRoute from "./pages/PrivateRoute";
+import Capitalization from "./pages/Capitalization";
+import Punctuation from "./pages/Punctuation";
+import Spelling from "./pages/Spelling";
 
 const App = () => {
   return (
@@ -29,6 +32,9 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/games" element={<Games />} />
+          <Route path="/games/capitalization" element={<Capitalization />} />
+          <Route path="/games/punctuation" element={<Punctuation />} />
+          <Route path="/games/spelling" element={<Spelling />} />
         </Route>
 
         {/* 404 */}
