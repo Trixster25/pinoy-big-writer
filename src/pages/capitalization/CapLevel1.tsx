@@ -33,6 +33,10 @@ function CapLevel1() {
   const [shuffledWords, setShuffledWords] = useState<Word[]>([]);
   const [showPenalty, setShowPenalty] = useState(false);
   const [popKey, setPopKey] = useState(0);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [lastAnswerCorrect, setLastAnswerCorrect] = useState<boolean | null>(
+    null
+  );
 
   const { user, setUser } = useUserStore();
   const navigate = useNavigate();
@@ -48,11 +52,14 @@ function CapLevel1() {
 
   // shuffle words on mount
   useEffect(() => {
-    setShuffledWords(shuffleArray(words));
+    const combined = [
+      ...shuffleArray(words.tier1).slice(0, 4),
+      ...shuffleArray(words.tier2).slice(0, 3),
+      ...shuffleArray(words.tier3).slice(0, 3),
+    ];
 
-    return () => {
-      stop();
-    };
+    setShuffledWords(combined);
+    return () => stop();
   }, []);
 
   // stop bg music if game ends
@@ -109,11 +116,17 @@ function CapLevel1() {
       setTimeout(() => setShowPenalty(false), 1000);
     }
 
-    if (index + 1 === shuffledWords.length) {
-      setCompleted(true);
-    } else {
-      setIndex((i) => i + 1);
-    }
+    setShowFeedback(true);
+    setLastAnswerCorrect(correct);
+
+    setTimeout(() => {
+      setShowFeedback(false);
+      if (index + 1 === shuffledWords.length) {
+        setCompleted(true);
+      } else {
+        setIndex((i) => i + 1);
+      }
+    }, 1000); // Adjust duration as needed
   };
 
   const starColor =
@@ -135,7 +148,14 @@ function CapLevel1() {
     setTimeLeft(45);
     setCompleted(false);
     setGameOver(false);
-    setShuffledWords(shuffleArray(words));
+
+    const combined = [
+      ...shuffleArray(words.tier1).slice(0, 4),
+      ...shuffleArray(words.tier2).slice(0, 3),
+      ...shuffleArray(words.tier3).slice(0, 3),
+    ];
+
+    setShuffledWords(combined);
   };
 
   const onWin = () => {
@@ -208,13 +228,7 @@ function CapLevel1() {
 
       {/* Instructions */}
       <div className="max-w-md w-full text-center bg-white shadow p-4 rounded-lg text-sm sm:text-base text-gray-800">
-        <p className="font-semibold mb-1">📋 Instructions:</p>
-        <ul className="list-disc list-inside space-y-1 text-left text-gray-700">
-          <li>Decide if the word shown is capitalized correctly.</li>
-          <li>Earn 1 ⭐ for every correct answer.</li>
-          <li>Wrong answers will cost you 5 seconds.</li>
-          <li>You win when you get 10 ⭐ before time runs out!</li>
-        </ul>
+        Does this word apply the Capitalization Rules correctly?
       </div>
 
       {/* Game Card */}
@@ -229,7 +243,7 @@ function CapLevel1() {
             </div>
             <button
               onClick={resetGame}
-              className="bg-blue-500 text-white px-6 py-2 hover:bg-blue-600"
+              className="bg-red-500 text-white px-6 py-2 hover:bg-red-600"
             >
               Try Again
             </button>
@@ -245,7 +259,7 @@ function CapLevel1() {
             <div className="flex mt-4">
               <button
                 onClick={resetGame}
-                className="flex-1 bg-blue-500 text-white px-6 py-2 hover:bg-blue-600"
+                className="flex-1 bg-green-500 text-white px-6 py-2 hover:bg-green-600"
               >
                 Play Again
               </button>
@@ -262,18 +276,31 @@ function CapLevel1() {
             <div className="flex-grow flex items-center justify-center text-2xl sm:text-3xl font-bold text-yellow-700 mb-6 font-serif">
               {shuffledWords[index].word}
             </div>
+            {showFeedback && (
+              <div
+                className={`w-full p-3 rounded text-white text-sm sm:text-base mb-4 ${
+                  lastAnswerCorrect ? "bg-green-500/60" : "bg-red-500/60"
+                }`}
+              >
+                Correct version:{" "}
+                <span className="font-semibold">
+                  {shuffledWords[index].correctWord}
+                </span>
+              </div>
+            )}
+
             <div className="flex justify-center mt-auto gap-4">
               <button
                 onClick={() => handleAnswer(true)}
                 className="flex-1 bg-orange-500 text-white px-6 py-3 hover:bg-orange-600 hover:scale-95 transition-transform"
               >
-                Correct
+                Yes
               </button>
               <button
                 onClick={() => handleAnswer(false)}
-                className="flex-1 bg-orange-700   text-white px-6 py-3 hover:bg-orange-800 hover:scale-95 transition-transform"
+                className="flex-1 bg-blue-500   text-white px-6 py-3 hover:bg-blue-600 hover:scale-95 transition-transform"
               >
-                Incorrect
+                No
               </button>
             </div>
           </div>

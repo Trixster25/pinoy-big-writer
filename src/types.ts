@@ -24,6 +24,7 @@ export interface User {
 export type Word = {
   word: string;
   isCorrect: boolean;
+  correctWord: string;
 };
 
 export type Prompt = {
