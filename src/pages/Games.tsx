@@ -2,9 +2,18 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { TiHome } from "react-icons/ti";
+import useSound from "use-sound";
+
+// 1. Import your door sounds:
+import doorOpenSfx from "/sounds/door-open.mp3";
+import doorCloseSfx from "/sounds/door-close.mp3";
 
 function Games() {
   const [hovered, setHovered] = useState<number | null>(null);
+
+  // 2. Initialize play functions for open/close
+  const [playOpen] = useSound(doorOpenSfx, { volume: 0.5, interrupt: true });
+  const [playClose] = useSound(doorCloseSfx, { volume: 0.5, interrupt: true });
 
   const cards = [
     { path: "/games/capitalization", src: "/doors/door1", alt: "Room 1" },
@@ -43,8 +52,16 @@ function Games() {
           >
             <Link to={card.path} className="w-full flex justify-center">
               <motion.img
-                onMouseEnter={() => setHovered(idx)}
-                onMouseLeave={() => setHovered(null)}
+                // 3a. onMouseEnter: mark hovered, play open SFX
+                onMouseEnter={() => {
+                  setHovered(idx);
+                  playOpen();
+                }}
+                // 3b. onMouseLeave: clear hover, play close SFX
+                onMouseLeave={() => {
+                  setHovered(null);
+                  playClose();
+                }}
                 src={
                   hovered === idx ? `${card.src}-open.png` : `${card.src}.png`
                 }
@@ -60,6 +77,8 @@ function Games() {
           </motion.div>
         ))}
       </div>
+
+      {/* Home Button */}
       <Link to="/home">
         <motion.div
           className="w-24 h-24 bg-yellow-500 text-white rounded-full flex items-center justify-center cursor-pointer"
