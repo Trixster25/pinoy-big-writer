@@ -122,8 +122,7 @@ function CapLevel3() {
 
   const onWin = () => {
     if (!user?.username) return;
-    // index 1 for Level 2
-    markLevelComplete(user.username, "capitalization", 1, setUser);
+    markLevelComplete(user.username, "capitalization", 2, setUser);
   };
 
   const starColor =

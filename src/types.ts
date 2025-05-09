@@ -1,8 +1,7 @@
 export type Achievements =
   | "completedAllCapitalization"
   | "completedAllPunctuation"
-  | "completedAllSpelling"
-  | "someOtherAchievement";
+  | "completedAllSpelling";
 
 export type Room = "capitalization" | "punctuation" | "spelling";
 

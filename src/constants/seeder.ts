@@ -506,4 +506,204 @@ export const capLevel2 = [
     answer: "They went to London last summer",
     correctIndexes: [0, 3],
   },
+  {
+    prompt: "she likes to read jane austen novels",
+    answer: "She likes to read Jane Austen novels",
+    correctIndexes: [0, 4, 5],
+  },
+  {
+    prompt: "we celebrated thanksgiving in november",
+    answer: "We celebrated Thanksgiving in November",
+    correctIndexes: [0, 2, 4],
+  },
+  {
+    prompt: "the capital of france is paris",
+    answer: "The capital of France is Paris",
+    correctIndexes: [0, 3, 5],
+  },
+  {
+    prompt: "i have a cat named whiskers",
+    answer: "I have a cat named Whiskers",
+    correctIndexes: [0, 5],
+  },
+  {
+    prompt: "they live on elm street",
+    answer: "They live on Elm Street",
+    correctIndexes: [0, 3],
+  },
+  {
+    prompt: "we visited mount fuji in japan",
+    answer: "We visited Mount Fuji in Japan",
+    correctIndexes: [0, 2, 3, 5],
+  },
+  {
+    prompt: "my aunt mary is a doctor",
+    answer: "My aunt Mary is a doctor",
+    correctIndexes: [0, 2],
+  },
+  {
+    prompt: "he enjoys watching national geographic",
+    answer: "He enjoys watching National Geographic",
+    correctIndexes: [0, 3, 4],
+  },
+  {
+    prompt: "she bought a new iphone yesterday",
+    answer: "She bought a new iPhone yesterday",
+    correctIndexes: [0, 4],
+  },
+  {
+    prompt: "we are going to disneyland next week",
+    answer: "We are going to Disneyland next week",
+    correctIndexes: [0, 3],
+  },
+  {
+    prompt: "the first day of the week is monday",
+    answer: "The first day of the week is Monday",
+    correctIndexes: [0, 6],
+  },
+  {
+    prompt: "i love eating italian food",
+    answer: "I love eating Italian food",
+    correctIndexes: [0, 3],
+  },
+  {
+    prompt: "they went to see the statue of liberty",
+    answer: "They went to see the Statue of Liberty",
+    correctIndexes: [0, 5, 6],
+  },
+  {
+    prompt: "my cousin michael is a teacher",
+    answer: "My cousin Michael is a teacher",
+    correctIndexes: [0, 2],
+  },
+  {
+    prompt: "she is reading a book by j.r.r. tolkien",
+    answer: "She is reading a book by J.R.R. Tolkien",
+    correctIndexes: [0, 6, 7],
+  },
+  {
+    prompt: "we are planning a trip to hawaii",
+    answer: "We are planning a trip to Hawaii",
+    correctIndexes: [0, 5],
+  },
+  {
+    prompt: "the president lives in the white house",
+    answer: "The President lives in the White House",
+    correctIndexes: [0, 5, 6],
+  },
+  {
+    prompt: "i enjoy listening to beatles songs",
+    answer: "I enjoy listening to Beatles songs",
+    correctIndexes: [0, 4],
+  },
+  {
+    prompt: "they visited the great wall of china",
+    answer: "They visited the Great Wall of China",
+    correctIndexes: [0, 3, 4, 6],
+  },
+  {
+    prompt: "my uncle george works at google",
+    answer: "My uncle George works at Google",
+    correctIndexes: [0, 2, 5],
+  },
+  {
+    prompt: "she is learning to play the piano",
+    answer: "She is learning to play the Piano",
+    correctIndexes: [0, 6],
+  },
+  {
+    prompt: "we went camping in yosemite national park",
+    answer: "We went camping in Yosemite National Park",
+    correctIndexes: [0, 4, 5, 6],
+  },
+  {
+    prompt: "the movie starts at six o'clock",
+    answer: "The movie starts at Six o'clock",
+    correctIndexes: [0, 4],
+  },
+  {
+    prompt: "i like drinking coca-cola",
+    answer: "I like drinking Coca-Cola",
+    correctIndexes: [0, 3],
+  },
+  {
+    prompt: "they went to a museum of modern art",
+    answer: "They went to a Museum of Modern Art",
+    correctIndexes: [0, 4, 5, 6],
+  },
+  {
+    prompt: "my sister emily is a student",
+    answer: "My sister Emily is a student",
+    correctIndexes: [0, 2],
+  },
+  {
+    prompt: "he is reading the new york times",
+    answer: "He is reading The New York Times",
+    correctIndexes: [0, 3, 4, 5],
+  },
+  {
+    prompt: "we are planning to visit niagara falls",
+    answer: "We are planning to visit Niagara Falls",
+    correctIndexes: [0, 5, 6],
+  },
+  {
+    prompt: "the queen of england lives in buckingham palace",
+    answer: "The Queen of England lives in Buckingham Palace",
+    correctIndexes: [0, 3, 7, 8],
+  },
+  {
+    prompt: "i enjoy watching disney movies",
+    answer: "I enjoy watching Disney movies",
+    correctIndexes: [0, 3],
+  },
+  {
+    prompt: "they traveled to the amazon rainforest",
+    answer: "They traveled to the Amazon Rainforest",
+    correctIndexes: [0, 3, 4],
+  },
+  {
+    prompt: "my neighbor mr. smith is very kind",
+    answer: "My neighbor Mr. Smith is very kind",
+    correctIndexes: [0, 2, 3],
+  },
+  {
+    prompt: "she is studying to become a nurse",
+    answer: "She is studying to become a Nurse",
+    correctIndexes: [0, 6],
+  },
+  {
+    prompt: "we are going to see a broadway show",
+    answer: "We are going to see a Broadway show",
+    correctIndexes: [0, 5],
+  },
+  {
+    prompt: "the capital of italy is rome",
+    answer: "The capital of Italy is Rome",
+    correctIndexes: [0, 3, 5],
+  },
+  {
+    prompt: "i like to drink iced tea",
+    answer: "I like to drink Iced Tea",
+    correctIndexes: [0, 4],
+  },
+  {
+    prompt: "they visited the louvre museum in paris",
+    answer: "They visited the Louvre Museum in Paris",
+    correctIndexes: [0, 3, 4, 6],
+  },
+  {
+    prompt: "my friend jessica is a programmer",
+    answer: "My friend Jessica is a programmer",
+    correctIndexes: [0, 2],
+  },
+  {
+    prompt: "he is reading a book about world war ii",
+    answer: "He is reading a book about World War II",
+    correctIndexes: [0, 6, 7, 8],
+  },
+  {
+    prompt: "we are planning a road trip across america",
+    answer: "We are planning a road trip across America",
+    correctIndexes: [0, 6],
+  },
 ];
