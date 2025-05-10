@@ -5,10 +5,20 @@
   src: local("ARCO"), url("./assets/fonts/ARCO.ttf");
 }
 
+@keyframes moveBg {
+  0% {
+    background-position: top right;
+  }
+  100% {
+    background-position: top left;
+  }
+}
+
 .background {
   background-image: url("/background.jpg");
   background-size: contain;
   background-repeat: repeat-x;
+  animation: moveBg 30s linear infinite;
 }
 
 .stripes {
