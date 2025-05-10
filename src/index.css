@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Arco";
+  src: local("ARCO"), url("./assets/fonts/ARCO.ttf");
+}
+
 .background {
   background-image: url("/background.jpg");
   background-size: contain;

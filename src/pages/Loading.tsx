@@ -38,7 +38,7 @@ function Loading() {
       <motion.img
         src="house.png"
         alt="Loading house"
-        className="w-[800px] h-auto"
+        className="w-[600px] h-auto"
         initial={{ scale: 1, x: 0, y: 0 }}
         animate={
           startZoom

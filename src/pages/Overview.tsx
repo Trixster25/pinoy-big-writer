@@ -38,6 +38,7 @@ function Overview() {
               navigate("/login");
             }
           }}
+          style={{ fontFamily: "Arco" }}
         >
           {user ? "Go to Home" : "Skip"}
           <FaCaretRight />
