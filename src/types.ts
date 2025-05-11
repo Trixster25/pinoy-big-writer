@@ -31,3 +31,9 @@ export type Prompt = {
   prompt: string;
   answer: string;
 };
+
+export type Question = {
+  question: string;
+  choices: string[];
+  answerIndex: number;
+};
