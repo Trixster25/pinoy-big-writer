@@ -54,3 +54,8 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.outlined-text {
+  color: rgba(0, 0, 0, 0.5);
+  -webkit-text-stroke: 4px white;
+}

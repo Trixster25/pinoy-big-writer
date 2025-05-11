@@ -5,8 +5,29 @@ import { BsDoorOpenFill } from "react-icons/bs";
 import { MdAssignment } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
+import { useUserStore } from "../stores/useUserStore";
+import { useEffect } from "react";
+import {
+  setLocalStorageItem,
+  getLocalStorageItem,
+} from "../utils/localstorage";
+import type { User } from "../types";
+import { formatRank } from "../utils/format";
 
 export default function Home() {
+  const { user, setUser } = useUserStore();
+
+  useEffect(() => {
+    if (!user) {
+      const localUser = getLocalStorageItem<User>("user");
+
+      if (localUser) {
+        setLocalStorageItem("user", localUser);
+        setUser(localUser);
+      }
+    }
+  }, [user]);
+
   return (
     <div className="flex flex-col gap-8 w-screen h-screen background p-8">
       <div className="w-[90%] flex justify-end ">
@@ -24,7 +45,7 @@ export default function Home() {
               }}
             >
               <span className="text-white" style={{ fontFamily: "Arco" }}>
-                ranking
+                {formatRank(user?.ranking)}
               </span>
               <FaPenToSquare className="text-[#F3B73F] text-2xl" />
             </motion.div>
@@ -42,7 +63,7 @@ export default function Home() {
               }}
             >
               <span className="text-white" style={{ fontFamily: "Arco" }}>
-                Stars
+                {user?.points}
               </span>
               <FaStar className="text-[#F3B73F] text-2xl" />
             </motion.div>
@@ -67,7 +88,7 @@ export default function Home() {
           </motion.button>
         </Link>
         <div className="flex-1 flex justify-center">
-          <img src="house.png" alt="" className="w-[250px]" />
+          <img src="house.png" alt="" className="w-[325px]" />
         </div>
 
         <Link to="/profile">
