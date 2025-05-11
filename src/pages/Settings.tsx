@@ -1,132 +1,171 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { TiHome } from "react-icons/ti";
+import { FaFolderOpen, FaStar } from "react-icons/fa6";
+import { useUserStore } from "../stores/useUserStore";
+import {
+  getLocalStorageItem,
+  setLocalStorageItem,
+} from "../utils/localstorage";
+import type { User } from "../types";
+import { RxLetterCaseCapitalize } from "react-icons/rx";
+import { SiGoogleslides } from "react-icons/si";
+import { FaCog } from "react-icons/fa";
 import { useSoundContext } from "../layouts/SoundProvider";
 
-function Settings() {
+export default function Settings() {
+  const { user, setUser } = useUserStore();
   const { toggleMusic, toggleClickSound, musicEnabled, clickEnabled } =
     useSoundContext();
 
+  useEffect(() => {
+    if (!user) {
+      const localUser = getLocalStorageItem<User>("user");
+      if (localUser) {
+        setLocalStorageItem("user", localUser);
+        setUser(localUser);
+      }
+    }
+  }, [user]);
+
   return (
     <div className="w-screen h-screen flex flex-col items-center background p-8">
-      <div className="w-full flex items-center justify-center">
+      {/* Tabs */}
+      <div className="w-full flex items-center justify-start">
         <span
-          className="text-center text-5xl w-[25%]  bg-black/50 px-6 py-3 rounded-t-3xl outlined-text"
+          className={`text-3xl bg-[#000000]/50 px-6 py-3 rounded-t-3xl text-white flex items-center gap-4 border-8 border-[#000000]/50 cursor-pointer`}
           style={{ fontFamily: "Arco" }}
         >
           Settings
+          <FaCog className="text-5xl text-yellow-500" />
         </span>
       </div>
-      <div className="flex-1 bg-[#903145] w-[60%] rounded-xl flex  flex-col items-center gap-8 p-8">
-        <div className="w-[60%] flex flex-col gap-4">
-          <div className="h-fit flex items-center justify-around bg-black/25 px-4 py-2 rounded-xl min-w-[50%]">
+
+      {/* Content */}
+      <div className="flex-1 w-full flex items-center justify-around gap-8 p-8 border-8 rounded-xl rounded-tl-none border-[#000000]/50 bg-[#000000]/25">
+        <div className="flex flex-col gap-8">
+          <div className="h-fit flex items-center justify-around bg-yellow-500 px-8 py-4 rounded-xl min-w-[300px]">
             <span
-              className="text-2xl text-white"
+              className="text-4xl text-white flex items-center gap-2"
               style={{ fontFamily: "Arco" }}
             >
               Music
             </span>
             <button
-              className={`relative w-12 h-6 rounded-full transition duration-200 ease-in-out focus:outline-none ${
-                musicEnabled ? "bg-green-500" : "bg-red-500"
+              className={`relative w-16 h-8 rounded-full transition duration-200 ease-in-out focus:outline-none ${
+                musicEnabled ? "bg-green-500" : "bg-black/25"
               }`}
               onClick={toggleMusic}
             >
               <span
-                className={`absolute top-[2px] left-[2px] w-5 h-5 bg-white rounded-full shadow-md transform transition duration-200 ease-in-out ${
-                  musicEnabled ? "translate-x-6" : "translate-x-0"
+                className={`absolute top-[2px] left-[2px] w-7 h-7 bg-white rounded-full shadow-md transform transition duration-200 ease-in-out ${
+                  musicEnabled ? "translate-x-8" : "translate-x-0"
                 }`}
               />
             </button>
           </div>
-          <div className="h-fit flex items-center justify-around bg-black/25 px-4 py-2 rounded-xl min-w-[50%] mt-4">
+          <div className="h-fit flex items-center justify-around bg-yellow-500 px-8 py-4 rounded-xl min-w-[300px]">
             <span
-              className="text-2xl text-white"
+              className="text-4xl text-white flex items-center gap-2"
               style={{ fontFamily: "Arco" }}
             >
-              Sound
+              Sounds
             </span>
             <button
-              className={`relative w-12 h-6 rounded-full transition duration-200 ease-in-out focus:outline-none ${
-                clickEnabled ? "bg-green-500" : "bg-red-500"
+              className={`relative w-16 h-8 rounded-full transition duration-200 ease-in-out focus:outline-none ${
+                clickEnabled ? "bg-green-500" : "bg-black/25"
               }`}
               onClick={toggleClickSound}
             >
               <span
-                className={`absolute top-[2px] left-[2px] w-5 h-5 bg-white rounded-full shadow-md transform transition duration-200 ease-in-out ${
-                  clickEnabled ? "translate-x-6" : "translate-x-0"
+                className={`absolute top-[2px] left-[2px] w-7 h-7 bg-white rounded-full shadow-md transform transition duration-200 ease-in-out ${
+                  clickEnabled ? "translate-x-8" : "translate-x-0"
                 }`}
               />
             </button>
           </div>
         </div>
-
-        <span className="text-2xl text-white" style={{ fontFamily: "Arco" }}>
-          Credits:
-        </span>
-        <div className="flex items-start justify-around w-full">
-          <div className="flex flex-col gap-4">
-            <span
-              className="text-white underline text-xl"
-              style={{ fontFamily: "Arco" }}
-            >
-              Concept:
-            </span>
-            <span className="text-white text-xl" style={{ fontFamily: "Arco" }}>
-              Anjeneth Mariano
-            </span>
-            <span className="text-white text-xl" style={{ fontFamily: "Arco" }}>
-              Cher Bautista
-            </span>
-            <span className="text-white text-xl" style={{ fontFamily: "Arco" }}>
-              Madison Reyes
-            </span>
-            <span className="text-white text-xl" style={{ fontFamily: "Arco" }}>
-              Micaela Salvador
-            </span>
-          </div>
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-2">
+        <div className="flex flex-col gap-8">
+          <span className="text-5xl text-white" style={{ fontFamily: "Arco" }}>
+            Credits
+          </span>
+          <div className="flex items-start justify-around gap-8 w-full">
+            <div className="flex flex-col gap-4">
               <span
                 className="text-white underline text-xl"
                 style={{ fontFamily: "Arco" }}
               >
-                Font:
+                Concept:
               </span>
               <span
                 className="text-white text-xl"
                 style={{ fontFamily: "Arco" }}
               >
-                Arco
+                Anjeneth Mariano
+              </span>
+              <span
+                className="text-white text-xl"
+                style={{ fontFamily: "Arco" }}
+              >
+                Cher Bautista
+              </span>
+              <span
+                className="text-white text-xl"
+                style={{ fontFamily: "Arco" }}
+              >
+                Madison Reyes
+              </span>
+              <span
+                className="text-white text-xl"
+                style={{ fontFamily: "Arco" }}
+              >
+                Micaela Salvador
               </span>
             </div>
-            <div className="flex items-center gap-2">
-              <span
-                className="text-white underline text-xl"
-                style={{ fontFamily: "Arco" }}
-              >
-                Music & SFX:
-              </span>
-              <span
-                className="text-white text-xl"
-                style={{ fontFamily: "Arco" }}
-              >
-                Pixabay
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span
-                className="text-white underline text-xl"
-                style={{ fontFamily: "Arco" }}
-              >
-                Graphics:
-              </span>
-              <span
-                className="text-white text-xl"
-                style={{ fontFamily: "Arco" }}
-              >
-                Canva
-              </span>
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-2">
+                <span
+                  className="text-white underline text-xl"
+                  style={{ fontFamily: "Arco" }}
+                >
+                  Font:
+                </span>
+                <span
+                  className="text-white text-xl"
+                  style={{ fontFamily: "Arco" }}
+                >
+                  Arco
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span
+                  className="text-white underline text-xl"
+                  style={{ fontFamily: "Arco" }}
+                >
+                  Music & SFX:
+                </span>
+                <span
+                  className="text-white text-xl"
+                  style={{ fontFamily: "Arco" }}
+                >
+                  Pixabay
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span
+                  className="text-white underline text-xl"
+                  style={{ fontFamily: "Arco" }}
+                >
+                  Graphics:
+                </span>
+                <span
+                  className="text-white text-xl"
+                  style={{ fontFamily: "Arco" }}
+                >
+                  Canva
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -136,7 +175,15 @@ function Settings() {
       <Link to="/home">
         <motion.div
           className="w-16 h-16 bg-black/50 text-white rounded-full flex items-center justify-center cursor-pointer mt-4"
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
           whileHover={{ scale: 0.8 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+            duration: 0.5,
+          }}
         >
           <motion.div
             initial={{ scale: 0 }}
@@ -150,5 +197,3 @@ function Settings() {
     </div>
   );
 }
-
-export default Settings;
