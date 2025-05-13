@@ -28,21 +28,6 @@ const allAchievementsDisplayData: Record<
   Achievements,
   Omit<AchievementCardProps, "date" | "achieved">
 > = {
-  completedAllCapitalization: {
-    title: "Capitalization Champion",
-    description: "Completed all Capitalization exercises.",
-    imageSrc: "/achievements/capital-trophy.png", // Replace with actual path
-  },
-  completedAllPunctuation: {
-    title: "Punctuation Champion",
-    description: "Completed all Punctuation exercises.",
-    imageSrc: "/achievements/punctuation-trophy.png", // Replace with actual path
-  },
-  completedAllSpelling: {
-    title: "Spelling Champion",
-    description: "Completed all Spelling exercises.",
-    imageSrc: "/achievements/spell-trophy.png", // Replace with actual path
-  },
   completedCapitalizationLevel1: {
     title: "Capitalization Beginner",
     description: "Completed the first Capitalization exercise.",
@@ -87,6 +72,27 @@ const allAchievementsDisplayData: Record<
     title: "Spelling Intermediate",
     description: "Completed the third Spelling exercise.",
     imageSrc: "/achievements/gold-medal.png", // Replace with actual path
+  },
+  completedAllCapitalization: {
+    title: "Capitalization Champion",
+    description: "Completed all Capitalization exercises.",
+    imageSrc: "/achievements/capital-trophy.png", // Replace with actual path
+  },
+  completedAllPunctuation: {
+    title: "Punctuation Champion",
+    description: "Completed all Punctuation exercises.",
+    imageSrc: "/achievements/punctuation-trophy.png", // Replace with actual path
+  },
+  completedAllSpelling: {
+    title: "Spelling Champion",
+    description: "Completed all Spelling exercises.",
+    imageSrc: "/achievements/spell-trophy.png", // Replace with actual path
+  },
+  completedAllLevels: {
+    title: "Pinoy Big Writer",
+    description:
+      "Completed all levels in Capitalization, Punctuation, and Spelling.",
+    imageSrc: "/achievements/pbw-trophy.png", // Replace with actual path
   },
 };
 
@@ -230,12 +236,37 @@ function Board() {
   }, [user]);
 
   useEffect(() => {
-    const achievementsToDisplay: AchievementCardProps[] = Object.entries(
-      allAchievementsDisplayData
-    ).map(([key, data]) => ({
-      ...data,
-      achieved: userAchievements.includes(key as Achievements),
+    const allLevelAchievements: Achievements[] = [
+      "completedCapitalizationLevel1",
+      "completedCapitalizationLevel2",
+      "completedCapitalizationLevel3",
+      "completedPunctuationLevel1",
+      "completedPunctuationLevel2",
+      "completedPunctuationLevel3",
+      "completedSpellingLevel1",
+      "completedSpellingLevel2",
+      "completedSpellingLevel3",
+    ];
+
+    const hasCompletedAllLevels = allLevelAchievements.every((level) =>
+      userAchievements.includes(level)
+    );
+
+    const hasUltimateAchievement =
+      userAchievements.includes("completedAllLevels");
+
+    const extendedAchievements = [...userAchievements];
+    if (hasCompletedAllLevels && !hasUltimateAchievement) {
+      extendedAchievements.push("completedAllLevels");
+    }
+
+    const achievementsToDisplay: AchievementCardProps[] = (
+      Object.keys(allAchievementsDisplayData) as Achievements[]
+    ).map((key) => ({
+      ...allAchievementsDisplayData[key],
+      achieved: extendedAchievements.includes(key),
     }));
+
     setDisplayedAchievementsData(achievementsToDisplay);
   }, [userAchievements]);
 

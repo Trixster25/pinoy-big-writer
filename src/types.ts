@@ -10,7 +10,8 @@ export type Achievements =
   | "completedPunctuationLevel3"
   | "completedSpellingLevel1"
   | "completedSpellingLevel2"
-  | "completedSpellingLevel3";
+  | "completedSpellingLevel3"
+  | "completedAllLevels";
 
 export type Room = "capitalization" | "punctuation" | "spelling";
 
