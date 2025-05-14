@@ -38,9 +38,9 @@ export type Word = {
   correctWord: string;
 };
 
-export type Prompt = {
-  prompt: string;
-  answer: string;
+export type Word3 = {
+  incorrectSentence: string;
+  correctSentence: string;
 };
 
 export type Question = {
