@@ -1,4 +1,9 @@
-import type { Question, Achievements, AchievementCardProps } from "../types";
+import type {
+  Question,
+  Achievements,
+  AchievementCardProps,
+  CorrectWordQuestion,
+} from "../types";
 
 export const capLevel1 = {
   tier1: [
@@ -3197,5 +3202,214 @@ export const spellLevel1 = [
     correct: "Believe",
     incorrect_alt: "Belive",
     definition: "To accept something as true.",
+  },
+];
+
+export const correctWordQuestions: CorrectWordQuestion[] = [
+  {
+    question: "I’m not sure if ______ going to the concert tonight.",
+    options: ["There", "Their", "They're"],
+    correctAnswer: "They're",
+  },
+  {
+    question:
+      "Everyone is invited to the party ______ for John, who has another event to attend.",
+    options: ["Accept", "Except"],
+    correctAnswer: "Except",
+  },
+  {
+    question: "______ notebook is this on the desk?",
+    options: ["Who's", "Whose"],
+    correctAnswer: "Whose",
+  },
+  {
+    question: "______ always so kind to everyone around you!",
+    options: ["Your", "You're"],
+    correctAnswer: "You're",
+  },
+  {
+    question: "The new rules will likely ______ the entire school’s schedule.",
+    options: ["Affect", "Effect"],
+    correctAnswer: "Affect",
+  },
+  {
+    question: "I’d rather read a book ______ watch a movie tonight.",
+    options: ["Than", "Then"],
+    correctAnswer: "Than",
+  },
+  {
+    question: "______ going to start the meeting at 3 PM.",
+    options: ["Were", "We're", "Where"],
+    correctAnswer: "We're",
+  },
+  {
+    question:
+      "The ______ building in Washington, D.C. is where the U.S. Congress meets.",
+    options: ["Capital", "Capitol"],
+    correctAnswer: "Capitol",
+  },
+  {
+    question:
+      "She watched the new episode of the crime ______ on TV last night.",
+    options: ["Cereal", "Serial"],
+    correctAnswer: "Serial",
+  },
+  {
+    question: "Remember to ______ before crossing the street!",
+    options: ["Brake", "Break"],
+    correctAnswer: "Brake",
+  },
+  {
+    question: "If you don't hold on tightly, you might ______ your grip.",
+    options: ["Loose", "Lose"],
+    correctAnswer: "Lose",
+  },
+  {
+    question: "Her scarf is the perfect ______ to her outfit.",
+    options: ["Compliment", "Complement"],
+    correctAnswer: "Complement",
+  },
+  {
+    question: "The school ______ announced the new rules yesterday.",
+    options: ["Principal", "Principle"],
+    correctAnswer: "Principal",
+  },
+  {
+    question: "I can't wait to have some chocolate cake for ______.",
+    options: ["Desert", "Dessert"],
+    correctAnswer: "Dessert",
+  },
+  {
+    question:
+      "She bought some beautiful ______ to write letters to her friends.",
+    options: ["Stationary", "Stationery"],
+    correctAnswer: "Stationery",
+  },
+  {
+    question: "He gave me great ______ on how to study for exams.",
+    options: ["Advice", "Advise"],
+    correctAnswer: "Advice",
+  },
+  {
+    question: "The mountains were a beautiful ______ to behold.",
+    options: ["Sight", "Site", "Cite"],
+    correctAnswer: "Sight",
+  },
+  {
+    question: "She needed to walk ______ to reach the cabin.",
+    options: ["Farther", "Further"],
+    correctAnswer: "Farther",
+  },
+  {
+    question: "Please ______ that the doors are locked before leaving.",
+    options: ["Ensure", "Insure"],
+    correctAnswer: "Ensure",
+  },
+  {
+    question: "I need to ______ down for a while; I'm feeling tired.",
+    options: ["Lay", "Lie"],
+    correctAnswer: "Lie",
+  },
+  {
+    question: "He was ______ introduced as the new manager.",
+    options: ["Formally", "Formerly"],
+    correctAnswer: "Formally",
+  },
+  {
+    question: "He took a quick ______ through the keyhole.",
+    options: ["Peek", "Peak", "Pique"],
+    correctAnswer: "Peek",
+  },
+  {
+    question: "The professor is an ______ expert in biology.",
+    options: ["Eminent", "Imminent"],
+    correctAnswer: "Eminent",
+  },
+  {
+    question: "I'm not sure ______ it will rain tomorrow.",
+    options: ["Whether", "Weather"],
+    correctAnswer: "Whether",
+  },
+  {
+    question: "The doctor showed great ______ with all his visitors.",
+    options: ["Patience", "Patients"],
+    correctAnswer: "Patience",
+  },
+  {
+    question: "He tried to ______ capture by hiding in the forest.",
+    options: ["Allude", "Elude"],
+    correctAnswer: "Elude",
+  },
+  {
+    question: "He was fully ______ during the entire surgery.",
+    options: ["Conscious", "Conscience"],
+    correctAnswer: "Conscious",
+  },
+  {
+    question: "The magician's act was just an ______ of the eye.",
+    options: ["Allusion", "Illusion"],
+    correctAnswer: "Illusion",
+  },
+  {
+    question:
+      "When she said she was busy, did she ______ that she didn’t want to join us",
+    options: ["Imply", "Infer"],
+    correctAnswer: "Infer",
+  },
+  {
+    question: "They decided to ______ a new strategy to improve productivity.",
+    options: ["Adapt", "Adopt"],
+    correctAnswer: "Adopt",
+  },
+  {
+    question: "The storm is ______, so we need to prepare.",
+    options: ["Eminent", "Imminent"],
+    correctAnswer: "Imminent",
+  },
+  {
+    question: "I ______ you that everything will be fine.",
+    options: ["Assure", "Ensure", "Insure"],
+    correctAnswer: "Assure",
+  },
+  {
+    question: "I will ______ the invitation if I'm free.",
+    options: ["Accept", "Except"],
+    correctAnswer: "Accept",
+  },
+  {
+    question: "Manila is the ______ of the Philippines.",
+    options: ["Capital", "Capitol"],
+    correctAnswer: "Capital",
+  },
+  {
+    question: "He ______ the team to victory last year.",
+    options: ["Lead", "Led"],
+    correctAnswer: "Led",
+  },
+  {
+    question: "He couldn’t ______ the pain any longer.",
+    options: ["Bear", "Bare"],
+    correctAnswer: "Bear",
+  },
+  {
+    question: "They fought a dramatic ______ to settle the score.",
+    options: ["Dual", "Duel"],
+    correctAnswer: "Duel",
+  },
+  {
+    question:
+      "The teacher's question managed to ______ an interesting response.",
+    options: ["Illicit", "Elicit"],
+    correctAnswer: "Elicit",
+  },
+  {
+    question: "You have ______ to the VIP lounge.",
+    options: ["Access", "Excess"],
+    correctAnswer: "Access",
+  },
+  {
+    question: "Her shoes perfectly ______ her dress.",
+    options: ["Compliment", "Complement"],
+    correctAnswer: "Complement",
   },
 ];

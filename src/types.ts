@@ -70,3 +70,9 @@ export interface SpellingCorrection {
   incorrect_alt: string;
   definition: string;
 }
+
+export type CorrectWordQuestion = {
+  question: string;
+  options: string[];
+  correctAnswer: string;
+};
