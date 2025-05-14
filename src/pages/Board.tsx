@@ -24,7 +24,7 @@ function AchievementCard({
 }: AchievementCardProps) {
   return (
     <div
-      className={`w-full flex items-center justify-center relative rounded-md overflow-hidden shadow-lg max-w-xs ${
+      className={`w-full flex items-center justify-center relative rounded-xl overflow-hidden shadow-lg max-w-xs ${
         achieved ? "bg-black/75" : ""
       }`}
     >

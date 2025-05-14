@@ -236,10 +236,7 @@ export default function Profile() {
             <hr className="border-2 border-white/25 w-full" />
             {/* Logout Button */}
             <div className="flex items-center gap-4">
-              <p
-                className="text-xl text-gray-400"
-                style={{ fontFamily: "Arco" }}
-              >
+              <p className="text-xl text-white" style={{ fontFamily: "Arco" }}>
                 Want to voluntarily exit?
               </p>
               <motion.button

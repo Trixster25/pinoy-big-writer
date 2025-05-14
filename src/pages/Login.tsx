@@ -104,13 +104,13 @@ function Login() {
       {step === 1 && (
         <div className="flex flex-col justify-center items-center gap-4">
           <h2
-            className="mb-4 text-white font-medium text-5xl"
+            className="mb-4 text-white font-medium text-5xl "
             style={{ fontFamily: "Arco" }}
           >
             Type your username
           </h2>
           <input
-            className="border-2 bg-yellow-200 border-yellow-800 text-yellow-800 p-4 rounded-xl text-2xl
+            className="border-6 bg-yellow-200 border-yellow-800 text-yellow-800 p-4 rounded-xl text-2xl
             focus:outline-none focus:ring-2 focus:ring-yellow-800/25 "
             type="text"
             placeholder="Username"
@@ -135,7 +135,7 @@ function Login() {
           <div className="mt-8">
             <button
               onClick={handleNext}
-              className="bg-[#FF6467] text-white px-8 py-4 rounded-xl text-2xl hover:scale-90"
+              className="bg-[#FF6467] text-white px-8 py-4 rounded-xl text-2xl border-6 border-black hover:scale-90"
               disabled={!username.trim() || loading}
               style={{ fontFamily: "Arco" }}
             >
@@ -159,7 +159,7 @@ function Login() {
                 key={avatar}
                 src={avatar}
                 alt="avatar"
-                className={`w-40 h-40 rounded-full cursor-pointer border-4 ${
+                className={`w-40 h-40 rounded-full cursor-pointer border-6 ${
                   selectedAvatar === avatar
                     ? "border-yellow-800"
                     : "border-yellow-300"
@@ -179,7 +179,7 @@ function Login() {
           <div className="mt-8">
             <button
               onClick={handleNext}
-              className="bg-[#FF6467] text-white px-8 py-4 rounded-xl text-2xl hover:scale-90"
+              className="bg-[#FF6467] text-white px-8 py-4 rounded-xl border-6 border-black text-2xl hover:scale-90"
               disabled={!selectedAvatar}
               style={{ fontFamily: "Arco" }}
             >
@@ -198,9 +198,9 @@ function Login() {
             {isExistingUser ? "Enter your password" : "Choose a password"}
           </h2>
           <input
-            className="border-2 bg-yellow-200 border-yellow-800 text-yellow-800 p-4 rounded-xl text-2xl
+            className="border-6 bg-yellow-200 border-yellow-800 text-yellow-800 p-4 rounded-xl text-2xl
             focus:outline-none focus:ring-2 focus:ring-yellow-800/25 "
-            type="password"
+            type={isExistingUser ? "password" : "text"}
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -217,7 +217,7 @@ function Login() {
           <div className="mt-8">
             <button
               onClick={handleFinish}
-              className="bg-[#05DF72] text-white px-8 py-4 rounded-xl text-2xl hover:scale-90"
+              className="bg-[#05DF72] text-white px-8 py-4 rounded-xl border-6 border-black text-2xl hover:scale-90"
               disabled={!password}
               style={{ fontFamily: "Arco" }}
             >
