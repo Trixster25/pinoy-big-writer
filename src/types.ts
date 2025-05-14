@@ -23,6 +23,7 @@ export type RoomProgress = {
 
 export interface User {
   username: string;
+  password: string;
   avatar: string;
   ranking: number;
   points: number;
@@ -52,4 +53,13 @@ export interface Word2 {
   prompt: string;
   answer: string;
   correctIndexes: number[];
+}
+
+// Define the structure for an achievement card
+export interface AchievementCardProps {
+  title: string;
+  description: string;
+  date?: string;
+  imageSrc: string;
+  achieved: boolean;
 }

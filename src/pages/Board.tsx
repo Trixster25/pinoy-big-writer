@@ -8,93 +8,12 @@ import {
   getLocalStorageItem,
   setLocalStorageItem,
 } from "../utils/localstorage";
-import type { User, Achievements } from "../types";
+import type { User, Achievements, AchievementCardProps } from "../types";
 import { FirestoreError } from "firebase/firestore";
 import { getUsers } from "../services/User"; // Import your Firebase functions
+import { allAchievementsDisplayData } from "../constants/seeder";
 
 type Tab = "Ranking" | "Achievements";
-
-// Define the structure for an achievement card
-interface AchievementCardProps {
-  title: string;
-  description: string;
-  date?: string;
-  imageSrc: string;
-  achieved: boolean;
-}
-
-// Mapping of achievement keys to display-friendly names and images
-const allAchievementsDisplayData: Record<
-  Achievements,
-  Omit<AchievementCardProps, "date" | "achieved">
-> = {
-  completedCapitalizationLevel1: {
-    title: "Capitalization Beginner",
-    description: "Completed the first Capitalization exercise.",
-    imageSrc: "/achievements/bronze-medal.png", // Replace with actual path
-  },
-  completedCapitalizationLevel2: {
-    title: "Capitalization Advance",
-    description: "Completed the second Capitalization exercise.",
-    imageSrc: "/achievements/silver-medal.png", // Replace with actual path
-  },
-  completedCapitalizationLevel3: {
-    title: "Capitalization Intermediate",
-    description: "Completed the third Capitalization exercise.",
-    imageSrc: "/achievements/gold-medal.png", // Replace with actual path
-  },
-  completedPunctuationLevel1: {
-    title: "Punctuation Beginner",
-    description: "Completed the first Punctuation exercise.",
-    imageSrc: "/achievements/bronze-medal.png", // Replace with actual path
-  },
-  completedPunctuationLevel2: {
-    title: "Punctuation Advance",
-    description: "Completed the second Punctuation exercise.",
-    imageSrc: "/achievements/silver-medal.png", // Replace with actual path
-  },
-  completedPunctuationLevel3: {
-    title: "Punctuation Intermediate",
-    description: "Completed the third Punctuation exercise.",
-    imageSrc: "/achievements/gold-medal.png", // Replace with actual path
-  },
-  completedSpellingLevel1: {
-    title: "Spelling Beginner",
-    description: "Completed the first Spelling exercise.",
-    imageSrc: "/achievements/bronze-medal.png", // Replace with actual path
-  },
-  completedSpellingLevel2: {
-    title: "Spelling Advance",
-    description: "Completed the second Spelling exercise.",
-    imageSrc: "/achievements/silver-medal.png", // Replace with actual path
-  },
-  completedSpellingLevel3: {
-    title: "Spelling Intermediate",
-    description: "Completed the third Spelling exercise.",
-    imageSrc: "/achievements/gold-medal.png", // Replace with actual path
-  },
-  completedAllCapitalization: {
-    title: "Capitalization Champion",
-    description: "Completed all Capitalization exercises.",
-    imageSrc: "/achievements/capital-trophy.png", // Replace with actual path
-  },
-  completedAllPunctuation: {
-    title: "Punctuation Champion",
-    description: "Completed all Punctuation exercises.",
-    imageSrc: "/achievements/punctuation-trophy.png", // Replace with actual path
-  },
-  completedAllSpelling: {
-    title: "Spelling Champion",
-    description: "Completed all Spelling exercises.",
-    imageSrc: "/achievements/spell-trophy.png", // Replace with actual path
-  },
-  completedAllLevels: {
-    title: "Pinoy Big Writer",
-    description:
-      "Completed all levels in Capitalization, Punctuation, and Spelling.",
-    imageSrc: "/achievements/pbw-trophy.png", // Replace with actual path
-  },
-};
 
 function AchievementCard({
   title,
