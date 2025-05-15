@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 import Loading from "./pages/Loading";
 import Overview from "./pages/Overview";
@@ -31,8 +32,27 @@ import CapVault from "./pages/capitalization/CapVault";
 import PuncVault from "./pages/punctuation/PuncVault";
 import SpellVault from "./pages/spelling/SpellVault";
 import Board from "./pages/Board";
+import RotateScreen from "./pages/RotateScreen"; // Assuming you create this component
 
 const App = () => {
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768); // Adjust breakpoint as needed
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 768); // Adjust breakpoint as needed
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  if (isSmallScreen) {
+    return <RotateScreen />;
+  }
+
   return (
     <SoundProvider>
       <Router>

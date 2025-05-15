@@ -17,7 +17,7 @@
 .background {
   background-image: url("/background.jpg");
   background-size: contain;
-  background-repeat: repeat-x;
+  background-repeat: repeat;
   animation: moveBg 30s linear infinite;
 }
 
@@ -34,27 +34,27 @@
 .capitalization {
   background-image: url("/capitalization.jpg");
   background-size: contain;
-  background-repeat: repeat-x;
+  background-repeat: repeat;
   animation: moveBg 30s linear infinite;
 }
 
 .punctuation {
   background-image: url("/punctuation.jpg");
   background-size: contain;
-  background-repeat: repeat-x;
+  background-repeat: repeat;
   animation: moveBg 30s linear infinite;
 }
 .spelling {
   background-image: url("/spelling.jpg");
   background-size: contain;
-  background-repeat: repeat-x;
+  background-repeat: repeat;
   animation: moveBg 30s linear infinite;
 }
 
 .board {
   background-image: url("/board.jpg");
   background-size: contain;
-  background-repeat: repeat-x;
+  background-repeat: repeat;
   animation: moveBg 30s linear infinite;
 }
 
@@ -67,7 +67,7 @@
 
 .outlined-text {
   color: rgba(0, 0, 0, 0.5);
-  -webkit-text-stroke: 2px white;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.473);
 }
 
 .outlined {
