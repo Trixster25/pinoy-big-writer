@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../stores/useUserStore";
-import {
-  setLocalStorageItem,
-  getLocalStorageItem,
-} from "../utils/localstorage";
+import { setLocalStorageItem } from "../utils/localstorage";
 import { addUser, getUser, updateUser } from "../services/User";
 import type { User } from "../types";
 import { useAuthRedirect } from "../hooks/useAuthRedirect";

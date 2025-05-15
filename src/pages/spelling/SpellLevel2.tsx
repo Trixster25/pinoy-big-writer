@@ -4,7 +4,6 @@ import { spellLevel2 as allQuestions } from "../../constants/seeder"; // Renamed
 import type { CorrectWordQuestion } from "../../types"; // Updated type import
 import { shuffleArray } from "../../utils/array";
 import { Link } from "react-router-dom";
-import { TiHome } from "react-icons/ti";
 import { useUserStore } from "../../stores/useUserStore";
 import { markLevelComplete } from "../../utils/game";
 import Confetti from "react-confetti";
@@ -76,7 +75,6 @@ function SpellLevel2() {
         return () => clearTimeout(timer);
       }
       if (timeLeft === 0) {
-        const currentQuestion = shuffledQuestions[index];
         setSelectedAnswer("Time's up!");
         setIsCorrect(false);
         setTimeout(() => {

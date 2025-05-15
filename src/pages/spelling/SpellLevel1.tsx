@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { spellLevel1 as allWords } from "../../constants/seeder"; // Renamed import
-import type { SpellingCorrection } from "../../types";
 import { shuffleArray } from "../../utils/array";
 import { Link } from "react-router-dom";
-import { TiHome } from "react-icons/ti";
 import { useUserStore } from "../../stores/useUserStore";
 import { markLevelComplete } from "../../utils/game";
 import Confetti from "react-confetti";
@@ -27,14 +25,6 @@ const starColors = [
   "text-red-500",
 ];
 
-// Define the structure of our word data
-type WordItem = {
-  incorrect: string;
-  correct: string;
-  incorrect_alt?: string;
-  definition: string;
-};
-
 // Define the structure for the shuffled question
 type Question = {
   definition: string;
@@ -52,7 +42,6 @@ function SpellLevel1() {
   const [shuffledQuestions, setShuffledQuestions] = useState<Question[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-  const [feedbackWord, setFeedbackWord] = useState<string | null>(null);
   const [popKey, setPopKey] = useState(0);
 
   const { user, setUser } = useUserStore();
@@ -102,15 +91,12 @@ function SpellLevel1() {
         return () => clearTimeout(timer);
       }
       if (timeLeft === 0) {
-        const currentQuestion = shuffledQuestions[index];
         setSelectedAnswer("Time's up!");
         setIsCorrect(false);
-        setFeedbackWord(currentQuestion.correctAnswer);
         playWrongSound();
         setTimeout(() => {
           setSelectedAnswer(null);
           setIsCorrect(null);
-          setFeedbackWord(null);
           if (index + 1 === shuffledQuestions.length && stars < 10) {
             setGameOver(true);
             playLoseSound();
@@ -158,7 +144,6 @@ function SpellLevel1() {
     const currentQuestion = shuffledQuestions[index];
     const correct = answer === currentQuestion.correctAnswer;
     setIsCorrect(correct);
-    setFeedbackWord(currentQuestion.correctAnswer);
 
     if (correct) {
       playCorrectSound();
@@ -167,7 +152,6 @@ function SpellLevel1() {
       setTimeout(() => {
         setSelectedAnswer(null);
         setIsCorrect(null);
-        setFeedbackWord(null);
         if (stars === 10) {
           setCompleted(true);
           playWinSound();
@@ -184,7 +168,6 @@ function SpellLevel1() {
       setTimeout(() => {
         setSelectedAnswer(null);
         setIsCorrect(null);
-        setFeedbackWord(null);
         if (index + 1 < shuffledQuestions.length) {
           setIndex((i) => i + 1);
           setTimeLeft(10); // Reset timer for the next question
@@ -205,7 +188,6 @@ function SpellLevel1() {
     setGameOver(false);
     setSelectedAnswer(null);
     setIsCorrect(null);
-    setFeedbackWord(null);
 
     // Take the first 10 words and shuffle them
     const selectedWords = shuffleArray(allWords).slice(0, 10);
@@ -234,7 +216,6 @@ function SpellLevel1() {
     setGameOver(false);
     setSelectedAnswer(null);
     setIsCorrect(null);
-    setFeedbackWord(null);
     // Take the first 10 words and shuffle them
     const selectedWords = shuffleArray(allWords).slice(0, 10);
 

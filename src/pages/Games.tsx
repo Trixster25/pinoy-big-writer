@@ -2,15 +2,13 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { TiHome } from "react-icons/ti";
-import { FaFolderOpen, FaStar } from "react-icons/fa6";
+import { FaStar } from "react-icons/fa6";
 import { useUserStore } from "../stores/useUserStore";
 import {
   getLocalStorageItem,
   setLocalStorageItem,
 } from "../utils/localstorage";
 import type { User } from "../types";
-import { RxLetterCaseCapitalize } from "react-icons/rx";
-import { SiGoogleslides } from "react-icons/si";
 import { BsDoorOpenFill } from "react-icons/bs";
 import { useState } from "react";
 import useSound from "use-sound";
@@ -179,37 +177,6 @@ function Games() {
         </motion.div>
       </Link>
     </div>
-  );
-}
-
-function VaultCard({
-  title,
-  bg,
-  iconColor,
-}: {
-  title: string;
-  bg: string;
-  iconColor: string;
-}) {
-  return (
-    <motion.div
-      className={`flex flex-col items-center gap-4 p-6 rounded-xl border-6 border-white`}
-      style={{ backgroundColor: bg, cursor: "pointer" }}
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      whileHover={{ scale: 0.95 }}
-      transition={{
-        type: "spring",
-        stiffness: 100,
-        damping: 10,
-        duration: 0.5,
-      }}
-    >
-      <FaFolderOpen className={`text-[15rem] text-${iconColor}`} />
-      <span className="text-black/75 text-3xl" style={{ fontFamily: "Arco" }}>
-        {title}
-      </span>
-    </motion.div>
   );
 }
 

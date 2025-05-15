@@ -4,7 +4,6 @@ import { capLevel1 as words } from "../../constants/seeder";
 import type { Word } from "../../types";
 import { shuffleArray } from "../../utils/array";
 import { Link } from "react-router-dom";
-import { TiHome } from "react-icons/ti";
 import { useUserStore } from "../../stores/useUserStore";
 import { markLevelComplete } from "../../utils/game";
 import Confetti from "react-confetti";

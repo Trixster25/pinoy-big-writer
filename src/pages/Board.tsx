@@ -66,7 +66,6 @@ function Board() {
     null
   );
   const [currentUserName, setCurrentUserName] = useState<string | null>(null);
-  const [allUsers, setAllUsers] = useState<User[]>([]); // State to hold all users
   const [userAchievements, setUserAchievements] = useState<Achievements[]>([]);
   const [displayedAchievementsData, setDisplayedAchievementsData] = useState<
     AchievementCardProps[]
@@ -97,7 +96,6 @@ function Board() {
     const fetchAndSortUsers = async () => {
       try {
         const usersData = await getUsers(); // Use your getUsers function
-        setAllUsers(usersData);
 
         // Sort users by points (already done in the query)
         const sortedUsers = [...usersData].sort(

@@ -2,15 +2,12 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { TiHome } from "react-icons/ti";
-import { FaFolderOpen, FaStar } from "react-icons/fa6";
 import { useUserStore } from "../stores/useUserStore";
 import {
   getLocalStorageItem,
   setLocalStorageItem,
 } from "../utils/localstorage";
 import type { User } from "../types";
-import { RxLetterCaseCapitalize } from "react-icons/rx";
-import { SiGoogleslides } from "react-icons/si";
 import { FaCog } from "react-icons/fa";
 import { useSoundContext } from "../layouts/SoundProvider";
 

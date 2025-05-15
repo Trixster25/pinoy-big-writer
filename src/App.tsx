@@ -7,7 +7,6 @@ import Home from "./pages/Home";
 import Vault from "./pages/Vault";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
-import Achievement from "./pages/Achievements";
 import Games from "./pages/Games";
 import NotFound from "./pages/NotFound";
 import PrivateRoute from "./pages/PrivateRoute";

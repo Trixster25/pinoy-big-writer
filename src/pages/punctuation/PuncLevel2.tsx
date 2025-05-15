@@ -4,7 +4,6 @@ import { puncLevel2 as allQuestions } from "../../constants/seeder"; // Updated 
 import type { QuizChoice } from "../../types";
 import { shuffleArray } from "../../utils/array";
 import { Link } from "react-router-dom";
-import { TiHome } from "react-icons/ti";
 import { useUserStore } from "../../stores/useUserStore";
 import { markLevelComplete } from "../../utils/game";
 import Confetti from "react-confetti";
@@ -39,7 +38,6 @@ function PuncLevel2() {
     null
   );
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-  const [feedback, setFeedback] = useState<string | null>(null);
   const [popKey, setPopKey] = useState(0);
 
   const { user, setUser } = useUserStore();
@@ -76,15 +74,12 @@ function PuncLevel2() {
         return () => clearTimeout(timer);
       }
       if (timeLeft === 0) {
-        const currentQuestion = shuffledQuestions[index];
         setSelectedAnswerIndex(-1);
         setIsCorrect(false);
-        setFeedback(currentQuestion.options[currentQuestion.answerIndex]);
         playWrongSound();
         setTimeout(() => {
           setSelectedAnswerIndex(null);
           setIsCorrect(null);
-          setFeedback(null);
           if (index + 1 === shuffledQuestions.length && stars < 10) {
             setGameOver(true);
             playLoseSound();
@@ -137,7 +132,6 @@ function PuncLevel2() {
     const currentQuestion = shuffledQuestions[index];
     const correct = answerIndex === currentQuestion.answerIndex;
     setIsCorrect(correct);
-    setFeedback(currentQuestion.options[currentQuestion.answerIndex]);
 
     if (correct) {
       playCorrectSound();
@@ -146,7 +140,6 @@ function PuncLevel2() {
       setTimeout(() => {
         setSelectedAnswerIndex(null);
         setIsCorrect(null);
-        setFeedback(null);
         if (stars === 10) {
           setCompleted(true);
           playWinSound();
@@ -163,7 +156,6 @@ function PuncLevel2() {
       setTimeout(() => {
         setSelectedAnswerIndex(null);
         setIsCorrect(null);
-        setFeedback(null);
         if (index + 1 < shuffledQuestions.length) {
           setIndex((i) => i + 1);
           setTimeLeft(20);
@@ -184,7 +176,6 @@ function PuncLevel2() {
     setGameOver(false);
     setSelectedAnswerIndex(null);
     setIsCorrect(null);
-    setFeedback(null);
 
     // Take the first 10 questions from puncLevel2 and shuffle them
     const selectedQuestions = shuffleArray(allQuestions).slice(0, 10);
@@ -200,7 +191,6 @@ function PuncLevel2() {
     setGameOver(false);
     setSelectedAnswerIndex(null);
     setIsCorrect(null);
-    setFeedback(null);
     // Take the first 10 questions from puncLevel2 and shuffle them
     const selectedQuestions = shuffleArray(allQuestions).slice(0, 10);
     setShuffledQuestions(selectedQuestions);

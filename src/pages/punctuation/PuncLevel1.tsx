@@ -4,7 +4,6 @@ import { puncLevel1 as allQuestions } from "../../constants/seeder"; // Renamed 
 import type { ChoicesQuestion } from "../../types"; // Updated type import
 import { shuffleArray } from "../../utils/array";
 import { Link } from "react-router-dom";
-import { TiHome } from "react-icons/ti";
 import { useUserStore } from "../../stores/useUserStore";
 import { markLevelComplete } from "../../utils/game";
 import Confetti from "react-confetti";
@@ -39,7 +38,6 @@ function PuncLevel1() {
   ); // Updated state type
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-  const [feedback, setFeedback] = useState<string | null>(null); // Changed feedbackWord to feedback
   const [popKey, setPopKey] = useState(0);
 
   const { user, setUser } = useUserStore();
@@ -76,15 +74,12 @@ function PuncLevel1() {
         return () => clearTimeout(timer);
       }
       if (timeLeft === 0) {
-        const currentQuestion = shuffledQuestions[index];
         setSelectedAnswer("Time's up!");
         setIsCorrect(false);
-        setFeedback(currentQuestion.correctAnswer);
         playWrongSound();
         setTimeout(() => {
           setSelectedAnswer(null);
           setIsCorrect(null);
-          setFeedback(null);
           if (index + 1 === shuffledQuestions.length && stars < 10) {
             setGameOver(true);
             playLoseSound();
@@ -132,7 +127,6 @@ function PuncLevel1() {
     const currentQuestion = shuffledQuestions[index];
     const correct = answer === currentQuestion.correctAnswer;
     setIsCorrect(correct);
-    setFeedback(currentQuestion.correctAnswer);
 
     if (correct) {
       playCorrectSound();
@@ -141,7 +135,6 @@ function PuncLevel1() {
       setTimeout(() => {
         setSelectedAnswer(null);
         setIsCorrect(null);
-        setFeedback(null);
         if (stars === 10) {
           setCompleted(true);
           playWinSound();
@@ -158,7 +151,6 @@ function PuncLevel1() {
       setTimeout(() => {
         setSelectedAnswer(null);
         setIsCorrect(null);
-        setFeedback(null);
         if (index + 1 < shuffledQuestions.length) {
           setIndex((i) => i + 1);
           setTimeLeft(10); // Reset timer for the next question
@@ -179,7 +171,6 @@ function PuncLevel1() {
     setGameOver(false);
     setSelectedAnswer(null);
     setIsCorrect(null);
-    setFeedback(null);
 
     // Take the first 10 questions and shuffle them
     const selectedQuestions = shuffleArray(allQuestions).slice(0, 10);
@@ -195,7 +186,6 @@ function PuncLevel1() {
     setGameOver(false);
     setSelectedAnswer(null);
     setIsCorrect(null);
-    setFeedback(null);
     // Take the first 10 questions and shuffle them
     const selectedQuestions = shuffleArray(allQuestions).slice(0, 10);
     setShuffledQuestions(selectedQuestions);

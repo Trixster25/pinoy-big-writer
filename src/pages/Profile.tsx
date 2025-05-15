@@ -9,7 +9,7 @@ import {
   setLocalStorageItem,
   removeLocalStorageItem,
 } from "../utils/localstorage";
-import type { User, Achievements, RoomProgress } from "../types";
+import type { User, Achievements } from "../types";
 import { IoPerson } from "react-icons/io5";
 import { allAchievementsDisplayData } from "../constants/seeder";
 import { getUsers, updateUser } from "../services/User";
@@ -25,10 +25,6 @@ const relevantAchievements: Achievements[] = [
 export default function Profile() {
   const { user, setUser } = useUserStore();
   const [currentUserRank, setCurrentUserRank] = useState<number | null>(null);
-  const [currentUserPoints, setCurrentUserPoints] = useState<number>(0);
-  const [currentUserName, setCurrentUserName] = useState<string>(
-    user?.username || ""
-  );
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -61,11 +57,6 @@ export default function Profile() {
           const me = ranked.find((r) => r.username === user.username);
           if (me) {
             setCurrentUserRank(me.rank);
-            setCurrentUserPoints(me.points);
-            setCurrentUserName(me.username);
-          } else {
-            setCurrentUserPoints(user.points || 0);
-            setCurrentUserName(user.username);
           }
         } catch (err) {
           console.error("Error fetching users:", err);
