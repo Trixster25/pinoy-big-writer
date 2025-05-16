@@ -3129,339 +3129,339 @@ export const puncLevel2: QuizChoice[] = [
     ],
     answerIndex: 0,
   },
-  {
-    options: [
-      "For sale: antique desk, excellent condition.",
-      "For sale; antique desk, excellent condition.",
-      "For sale, antique desk, excellent condition.",
-      "For sale. antique desk, excellent condition.",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "He couldn't decide whether to go left or right.",
-      "He couldn't decide whether to go left, or right.",
-      "He couldn't decide whether to go left; or right.",
-      "He couldn't decide whether to go left... or right.",
-    ],
-    answerIndex: 3,
-  },
-  {
-    options: [
-      "The company's goals were clear: increase profit, expand market share, and improve customer satisfaction.",
-      "The company's goals were clear; increase profit, expand market share, and improve customer satisfaction.",
-      "The company's goals were clear, increase profit, expand market share, and improve customer satisfaction.",
-      "The company's goals were clear... increase profit, expand market share, and improve customer satisfaction.",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      '"I think," she said, "that this is the right way."',
-      '"I think she said that this is the right way."',
-      '"I think" she said "that this is the right way."',
-      '"I think; she said; that this is the right way."',
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "The car, a vintage convertible, was parked in the driveway.",
-      "The car a vintage convertible was parked in the driveway.",
-      "The car; a vintage convertible; was parked in the driveway.",
-      "The car: a vintage convertible: was parked in the driveway.",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "He hesitated... then he finally answered the question.",
-      "He hesitated, then he finally answered the question.",
-      "He hesitated; then he finally answered the question.",
-      "He hesitated then he finally answered the question.",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "The report concluded that further research was needed.",
-      "The report concluded: that further research was needed.",
-      "The report concluded; that further research was needed.",
-      "The report concluded, that further research was needed.",
-    ],
-    answerIndex: 3,
-  },
-  {
-    options: [
-      "She enjoyed reading, hiking, and baking.",
-      "She enjoyed reading hiking and baking.",
-      "She enjoyed reading; hiking; and baking.",
-      " She enjoyed reading: hiking: and baking.",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "The speaker emphasized three key points honesty integrity and hard work.",
-      "The speaker emphasized three key points: honesty, integrity, and hard work.",
-      "The speaker emphasized three key points; honesty, integrity, and hard work.",
-      "The speaker emphasized three key points, honesty, integrity, and hard work.",
-    ],
-    answerIndex: 1,
-  },
-  {
-    options: [
-      '"Well," he began, "it\'s a long story."',
-      '"Well he began it\'s a long story."',
-      '"Well;" he began; "it\'s a long story."',
-      '"Well," he began "it\'s a long story."',
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "The dog barked loudly, wagged its tail, and jumped around.",
-      "The dog barked loudly; wagged its tail; and jumped around.",
-      "The dog barked loudly: wagged its tail: and jumped around.",
-      "The dog barked loudly wagged its tail and jumped around.",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      '"I\'m so glad to see you," she exclaimed with a smile.',
-      '"I\'m so glad to see you"; she exclaimed with a smile.',
-      '"I\'m so glad to see you." she exclaimed with a smile.',
-      '"I\'m so glad to see you" she exclaimed with a smile!',
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "The old car sputtered, coughed, and finally stopped running.",
-      "The old car sputtered; coughed; and finally stopped running.",
-      "The old car sputtered: coughed: and finally stopped running.",
-      "The old car sputtered coughed and finally stopped running.",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      'She asked him, "Where did you go?"',
-      'She asked him; "Where did you go?"',
-      'She asked him. "Where did you go?"',
-      'She asked him "Where did you go"!',
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "The store sold apples, bananas, and oranges, all locally grown.",
-      "The store sold apples; bananas; and oranges; all locally grown.",
-      "The store sold apples: bananas: and oranges: all locally grown.",
-      "The store sold apples bananas and oranges all locally grown.",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "He was a well-respected member of the community.",
-      "He was a well respected member of the community.",
-      "He was a well, respected member of the community.",
-      "He was a well; respected member of the community.",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "The movie was exciting, suspenseful, and ultimately satisfying—a great experience.",
-      "The movie was exciting; suspenseful; and ultimately satisfying; a great experience.",
-      "The movie was exciting: suspenseful: and ultimately satisfying: a great experience.",
-      "The movie was exciting suspenseful and ultimately satisfying a great experience.",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "My favorite subjects are history, science, and literature; they are all so interesting.",
-      "My favorite subjects are history; science; and literature, they are all so interesting.",
-      "My favorite subjects are history: science: and literature: they are all so interesting.",
-      "My favorite subjects are history science and literature they are all so interesting.",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "The rain stopped, the sun came out, and a rainbow appeared.",
-      "The rain stopped; the sun came out; and a rainbow appeared.",
-      "The rain stopped: the sun came out: and a rainbow appeared.",
-      "The rain stopped the sun came out and a rainbow appeared!",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      '"Wow, that\'s an amazing view!" she exclaimed.',
-      '"Wow"; that\'s an amazing view!"; she exclaimed.',
-      '"Wow." that\'s an amazing view!" she exclaimed.',
-      '"Wow that\'s an amazing view" she exclaimed?',
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "For rent: a small apartment, newly renovated.",
-      "For rent; a small apartment; newly renovated.",
-      "For rent, a small apartment, newly renovated.",
-      "For rent a small apartment newly renovated!",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "He wasn't sure if he should laugh... or cry.",
-      "He wasn't sure if he should laugh, or cry?",
-      "He wasn't sure if he should laugh; or cry.",
-      "He wasn't sure if he should laugh or cry!",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "The company announced major changes: a new CEO, a revised strategy, and a focus on innovation.",
-      "The company announced major changes; a new CEO; a revised strategy; and a focus on innovation.",
-      "The company announced major changes, a new CEO, a revised strategy, and a focus on innovation.",
-      "The company announced major changes... a new CEO, a revised strategy, and a focus on innovation.",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      '"If you need anything," he said, "don\'t hesitate to call."',
-      '"If you need anything he said don\'t hesitate to call."',
-      '"If you need anything"; he said; "don\'t hesitate to call."',
-      '"If you need anything," he said "don\'t hesitate to call"!',
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "The building, a historic landmark, was recently restored.",
-      "The building a historic landmark was recently restored!",
-      "The building; a historic landmark; was recently restored.",
-      "The building: a historic landmark: was recently restored.",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "She thought about it for a moment, then she made her decision.",
-      "She thought about it for amoment; then she made her decision.",
-      "She thought about it for a moment: then she made her decision.",
-      "She thought about it for a moment then she made her decision!",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "The study indicated several key findings: more research was needed.",
-      "The study indicated several key findings; more research was needed.",
-      "The study indicated several key findings, more research was needed.",
-      "The study indicated several key findings... more research was needed.",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "He enjoyed swimming, hiking, and camping—all outdoor activities.",
-      "He enjoyed swimming; hiking; and camping; all outdoor activities.",
-      "He enjoyed swimming: hiking: and camping: all outdoor activities.",
-      "He enjoyed swimming hiking and camping all outdoor activities!",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "The speaker outlined three main points: clarity, conciseness, and confidence.",
-      "The speaker outlined three main points; clarity; conciseness; and confidence.",
-      "The speaker outlined three main points, clarity, conciseness, and confidence.",
-      "The speaker outlined three main points clarity conciseness and confidence!",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      '"Well, I never!" she exclaimed in surprise.',
-      '"Well; I never!"; she exclaimed in surprise.',
-      '"Well." I never!" she exclaimed in surprise.',
-      '"Well I never" she exclaimed in surprise?',
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "The cake recipe called for flour, sugar, butter, and eggs—simple ingredients.",
-      "The cake recipe called for flour; sugar; butter; and eggs; simple ingredients.",
-      "The cake recipe called for flour: sugar: butter: and eggs: simple ingredients.",
-      "The cake recipe called for flour sugar butter and eggs simple ingredients!",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      'She wondered aloud, "Is it going to rain today?"',
-      'She wondered aloud; "Is it going to rain today?"',
-      'She wondered aloud. "Is it going to rain today?"',
-      'She wondered aloud "Is it going to rain today"!',
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "The old house creaked, groaned, and settled as the wind blew.",
-      "The old house creaked; groaned; and settled; as the wind blew.",
-      "The old house creaked: groaned: and settled: as the wind blew.",
-      "The old house creaked groaned and settled as the wind blew!",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      'He asked politely, "Could you please help me?"',
-      'He asked politely; "Could you please help me?"',
-      'He asked politely. "Could you please help me?"',
-      'He asked politely "Could you please help me"!',
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "The picnic included sandwiches, fruit, and drinks, all packed carefully.",
-      "The picnic included sandwiches; fruit; and drinks; all packed carefully.",
-      "The picnic included sandwiches: fruit: and drinks: all packed carefully.",
-      "The picnic included sandwiches fruit and drinks all packed carefully!",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "The artist was known for his bold, colorful paintings.",
-      "The artist was known for his bold colorful paintings!",
-      "The artist was known for his bold; colorful paintings.",
-      "The artist was known for his bold: colorful paintings.",
-    ],
-    answerIndex: 0,
-  },
-  {
-    options: [
-      "The play was long and at times confusing—but ultimately thought-provoking.",
-      "The play was long and at times confusing; but ultimately thought-provoking.",
-      "The play was long and at times confusing: but ultimately thought-provoking.",
-      "The play was long and at times confusing but ultimately thought-provoking!",
-    ],
-    answerIndex: 0,
-  },
+  // {
+  //   options: [
+  //     "For sale: antique desk, excellent condition.",
+  //     "For sale; antique desk, excellent condition.",
+  //     "For sale, antique desk, excellent condition.",
+  //     "For sale. antique desk, excellent condition.",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "He couldn't decide whether to go left or right.",
+  //     "He couldn't decide whether to go left, or right.",
+  //     "He couldn't decide whether to go left; or right.",
+  //     "He couldn't decide whether to go left... or right.",
+  //   ],
+  //   answerIndex: 3,
+  // },
+  // {
+  //   options: [
+  //     "The company's goals were clear: increase profit, expand market share, and improve customer satisfaction.",
+  //     "The company's goals were clear; increase profit, expand market share, and improve customer satisfaction.",
+  //     "The company's goals were clear, increase profit, expand market share, and improve customer satisfaction.",
+  //     "The company's goals were clear... increase profit, expand market share, and improve customer satisfaction.",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     '"I think," she said, "that this is the right way."',
+  //     '"I think she said that this is the right way."',
+  //     '"I think" she said "that this is the right way."',
+  //     '"I think; she said; that this is the right way."',
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "The car, a vintage convertible, was parked in the driveway.",
+  //     "The car a vintage convertible was parked in the driveway.",
+  //     "The car; a vintage convertible; was parked in the driveway.",
+  //     "The car: a vintage convertible: was parked in the driveway.",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "He hesitated... then he finally answered the question.",
+  //     "He hesitated, then he finally answered the question.",
+  //     "He hesitated; then he finally answered the question.",
+  //     "He hesitated then he finally answered the question.",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "The report concluded that further research was needed.",
+  //     "The report concluded: that further research was needed.",
+  //     "The report concluded; that further research was needed.",
+  //     "The report concluded, that further research was needed.",
+  //   ],
+  //   answerIndex: 3,
+  // },
+  // {
+  //   options: [
+  //     "She enjoyed reading, hiking, and baking.",
+  //     "She enjoyed reading hiking and baking.",
+  //     "She enjoyed reading; hiking; and baking.",
+  //     " She enjoyed reading: hiking: and baking.",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "The speaker emphasized three key points honesty integrity and hard work.",
+  //     "The speaker emphasized three key points: honesty, integrity, and hard work.",
+  //     "The speaker emphasized three key points; honesty, integrity, and hard work.",
+  //     "The speaker emphasized three key points, honesty, integrity, and hard work.",
+  //   ],
+  //   answerIndex: 1,
+  // },
+  // {
+  //   options: [
+  //     '"Well," he began, "it\'s a long story."',
+  //     '"Well he began it\'s a long story."',
+  //     '"Well;" he began; "it\'s a long story."',
+  //     '"Well," he began "it\'s a long story."',
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "The dog barked loudly, wagged its tail, and jumped around.",
+  //     "The dog barked loudly; wagged its tail; and jumped around.",
+  //     "The dog barked loudly: wagged its tail: and jumped around.",
+  //     "The dog barked loudly wagged its tail and jumped around.",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     '"I\'m so glad to see you," she exclaimed with a smile.',
+  //     '"I\'m so glad to see you"; she exclaimed with a smile.',
+  //     '"I\'m so glad to see you." she exclaimed with a smile.',
+  //     '"I\'m so glad to see you" she exclaimed with a smile!',
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "The old car sputtered, coughed, and finally stopped running.",
+  //     "The old car sputtered; coughed; and finally stopped running.",
+  //     "The old car sputtered: coughed: and finally stopped running.",
+  //     "The old car sputtered coughed and finally stopped running.",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     'She asked him, "Where did you go?"',
+  //     'She asked him; "Where did you go?"',
+  //     'She asked him. "Where did you go?"',
+  //     'She asked him "Where did you go"!',
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "The store sold apples, bananas, and oranges, all locally grown.",
+  //     "The store sold apples; bananas; and oranges; all locally grown.",
+  //     "The store sold apples: bananas: and oranges: all locally grown.",
+  //     "The store sold apples bananas and oranges all locally grown.",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "He was a well-respected member of the community.",
+  //     "He was a well respected member of the community.",
+  //     "He was a well, respected member of the community.",
+  //     "He was a well; respected member of the community.",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "The movie was exciting, suspenseful, and ultimately satisfying—a great experience.",
+  //     "The movie was exciting; suspenseful; and ultimately satisfying; a great experience.",
+  //     "The movie was exciting: suspenseful: and ultimately satisfying: a great experience.",
+  //     "The movie was exciting suspenseful and ultimately satisfying a great experience.",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "My favorite subjects are history, science, and literature; they are all so interesting.",
+  //     "My favorite subjects are history; science; and literature, they are all so interesting.",
+  //     "My favorite subjects are history: science: and literature: they are all so interesting.",
+  //     "My favorite subjects are history science and literature they are all so interesting.",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "The rain stopped, the sun came out, and a rainbow appeared.",
+  //     "The rain stopped; the sun came out; and a rainbow appeared.",
+  //     "The rain stopped: the sun came out: and a rainbow appeared.",
+  //     "The rain stopped the sun came out and a rainbow appeared!",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     '"Wow, that\'s an amazing view!" she exclaimed.',
+  //     '"Wow"; that\'s an amazing view!"; she exclaimed.',
+  //     '"Wow." that\'s an amazing view!" she exclaimed.',
+  //     '"Wow that\'s an amazing view" she exclaimed?',
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "For rent: a small apartment, newly renovated.",
+  //     "For rent; a small apartment; newly renovated.",
+  //     "For rent, a small apartment, newly renovated.",
+  //     "For rent a small apartment newly renovated!",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "He wasn't sure if he should laugh... or cry.",
+  //     "He wasn't sure if he should laugh, or cry?",
+  //     "He wasn't sure if he should laugh; or cry.",
+  //     "He wasn't sure if he should laugh or cry!",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "The company announced major changes: a new CEO, a revised strategy, and a focus on innovation.",
+  //     "The company announced major changes; a new CEO; a revised strategy; and a focus on innovation.",
+  //     "The company announced major changes, a new CEO, a revised strategy, and a focus on innovation.",
+  //     "The company announced major changes... a new CEO, a revised strategy, and a focus on innovation.",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     '"If you need anything," he said, "don\'t hesitate to call."',
+  //     '"If you need anything he said don\'t hesitate to call."',
+  //     '"If you need anything"; he said; "don\'t hesitate to call."',
+  //     '"If you need anything," he said "don\'t hesitate to call"!',
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "The building, a historic landmark, was recently restored.",
+  //     "The building a historic landmark was recently restored!",
+  //     "The building; a historic landmark; was recently restored.",
+  //     "The building: a historic landmark: was recently restored.",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "She thought about it for a moment, then she made her decision.",
+  //     "She thought about it for amoment; then she made her decision.",
+  //     "She thought about it for a moment: then she made her decision.",
+  //     "She thought about it for a moment then she made her decision!",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "The study indicated several key findings: more research was needed.",
+  //     "The study indicated several key findings; more research was needed.",
+  //     "The study indicated several key findings, more research was needed.",
+  //     "The study indicated several key findings... more research was needed.",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "He enjoyed swimming, hiking, and camping—all outdoor activities.",
+  //     "He enjoyed swimming; hiking; and camping; all outdoor activities.",
+  //     "He enjoyed swimming: hiking: and camping: all outdoor activities.",
+  //     "He enjoyed swimming hiking and camping all outdoor activities!",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "The speaker outlined three main points: clarity, conciseness, and confidence.",
+  //     "The speaker outlined three main points; clarity; conciseness; and confidence.",
+  //     "The speaker outlined three main points, clarity, conciseness, and confidence.",
+  //     "The speaker outlined three main points clarity conciseness and confidence!",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     '"Well, I never!" she exclaimed in surprise.',
+  //     '"Well; I never!"; she exclaimed in surprise.',
+  //     '"Well." I never!" she exclaimed in surprise.',
+  //     '"Well I never" she exclaimed in surprise?',
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "The cake recipe called for flour, sugar, butter, and eggs—simple ingredients.",
+  //     "The cake recipe called for flour; sugar; butter; and eggs; simple ingredients.",
+  //     "The cake recipe called for flour: sugar: butter: and eggs: simple ingredients.",
+  //     "The cake recipe called for flour sugar butter and eggs simple ingredients!",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     'She wondered aloud, "Is it going to rain today?"',
+  //     'She wondered aloud; "Is it going to rain today?"',
+  //     'She wondered aloud. "Is it going to rain today?"',
+  //     'She wondered aloud "Is it going to rain today"!',
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "The old house creaked, groaned, and settled as the wind blew.",
+  //     "The old house creaked; groaned; and settled; as the wind blew.",
+  //     "The old house creaked: groaned: and settled: as the wind blew.",
+  //     "The old house creaked groaned and settled as the wind blew!",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     'He asked politely, "Could you please help me?"',
+  //     'He asked politely; "Could you please help me?"',
+  //     'He asked politely. "Could you please help me?"',
+  //     'He asked politely "Could you please help me"!',
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "The picnic included sandwiches, fruit, and drinks, all packed carefully.",
+  //     "The picnic included sandwiches; fruit; and drinks; all packed carefully.",
+  //     "The picnic included sandwiches: fruit: and drinks: all packed carefully.",
+  //     "The picnic included sandwiches fruit and drinks all packed carefully!",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "The artist was known for his bold, colorful paintings.",
+  //     "The artist was known for his bold colorful paintings!",
+  //     "The artist was known for his bold; colorful paintings.",
+  //     "The artist was known for his bold: colorful paintings.",
+  //   ],
+  //   answerIndex: 0,
+  // },
+  // {
+  //   options: [
+  //     "The play was long and at times confusing—but ultimately thought-provoking.",
+  //     "The play was long and at times confusing; but ultimately thought-provoking.",
+  //     "The play was long and at times confusing: but ultimately thought-provoking.",
+  //     "The play was long and at times confusing but ultimately thought-provoking!",
+  //   ],
+  //   answerIndex: 0,
+  // },
 ];
 
 export const puncLevel3: Word3[] = [

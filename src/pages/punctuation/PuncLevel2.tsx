@@ -3,7 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { puncLevel2 as allQuestions } from "../../constants/seeder"; // Updated import to puncLevel2
 import type { QuizChoice } from "../../types";
 import { shuffleArray } from "../../utils/array";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserStore } from "../../stores/useUserStore";
 import { markLevelComplete } from "../../utils/game";
 import Confetti from "react-confetti";
@@ -39,11 +39,13 @@ function PuncLevel2() {
   );
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [popKey, setPopKey] = useState(0);
+  const [questionCount, setQuestionCount] = useState(0); // Track the number of questions answered
 
   const { user, setUser } = useUserStore();
   const { width, height } = useWindowSize();
   const timerControls = useAnimation();
   const { clickEnabled } = useSoundContext();
+  const navigate = useNavigate();
 
   const [playCorrectSound] = useSound(correctSoundPath, {
     soundEnabled: clickEnabled,
@@ -60,6 +62,8 @@ function PuncLevel2() {
     // Take the first 10 questions from puncLevel2 and shuffle them
     const selectedQuestions = shuffleArray(allQuestions).slice(0, 10);
     setShuffledQuestions(selectedQuestions);
+    setQuestionCount(0); // Reset question count on game start/restart
+    setStars(0); // Reset stars as well
   }, [allQuestions]); // Dependency array now correctly uses allQuestions (which is puncLevel2)
 
   useEffect(() => {
@@ -67,7 +71,8 @@ function PuncLevel2() {
       !showInstructions &&
       !completed &&
       !gameOver &&
-      shuffledQuestions.length > 0
+      shuffledQuestions.length > 0 &&
+      questionCount < 10 // Continue only if less than 10 questions answered
     ) {
       if (timeLeft > 0) {
         const timer = setTimeout(() => setTimeLeft((t) => t - 1), 1000);
@@ -80,18 +85,19 @@ function PuncLevel2() {
         setTimeout(() => {
           setSelectedAnswerIndex(null);
           setIsCorrect(null);
-          if (index + 1 === shuffledQuestions.length && stars < 10) {
-            setGameOver(true);
-            playLoseSound();
+          setQuestionCount((count) => count + 1); // Increment question count
+          if (questionCount + 1 === 10) {
+            // After 10 questions, check the score
+            if (stars >= 7) {
+              setCompleted(true);
+              playWinSound();
+            } else {
+              setGameOver(true);
+              playLoseSound();
+            }
           } else if (index + 1 < shuffledQuestions.length) {
             setIndex((i) => i + 1);
             setTimeLeft(20);
-          } else if (stars === 10) {
-            setCompleted(true);
-            playWinSound();
-          } else {
-            setGameOver(true);
-            playLoseSound();
           }
         }, 2000);
       }
@@ -107,24 +113,22 @@ function PuncLevel2() {
     playWrongSound,
     playLoseSound,
     playWinSound,
+    questionCount,
   ]);
 
   useEffect(() => {
-    if (stars === 10 && !completed) {
-      setCompleted(true);
-      playWinSound();
-      if (user?.username) {
-        markLevelComplete(user.username, "punctuation", 1, setUser); // Assuming level 2 has index 1
-      }
+    if (completed && user?.username) {
+      markLevelComplete(user.username, "punctuation", 1, setUser, stars); // Assuming level 2 has index 1
     }
-  }, [stars, user, setUser, completed, playWinSound]);
+  }, [completed, user, setUser]);
 
   const handleAnswer = (answerIndex: number) => {
     if (
       selectedAnswerIndex !== null ||
       completed ||
       gameOver ||
-      showInstructions
+      showInstructions ||
+      questionCount >= 10 // Prevent answering after 10 questions
     )
       return;
 
@@ -140,15 +144,19 @@ function PuncLevel2() {
       setTimeout(() => {
         setSelectedAnswerIndex(null);
         setIsCorrect(null);
-        if (stars === 10) {
-          setCompleted(true);
-          playWinSound();
+        setQuestionCount((count) => count + 1); // Increment question count
+        if (questionCount + 1 === 10) {
+          // After 10 questions, check the score
+          if (stars >= 7) {
+            setCompleted(true);
+            playWinSound();
+          } else {
+            setGameOver(true);
+            playLoseSound();
+          }
         } else if (index + 1 < shuffledQuestions.length) {
           setIndex((i) => i + 1);
           setTimeLeft(20);
-        } else {
-          setGameOver(true);
-          playLoseSound();
         }
       }, 2000);
     } else {
@@ -156,12 +164,19 @@ function PuncLevel2() {
       setTimeout(() => {
         setSelectedAnswerIndex(null);
         setIsCorrect(null);
-        if (index + 1 < shuffledQuestions.length) {
+        setQuestionCount((count) => count + 1); // Increment question count
+        if (questionCount + 1 === 10) {
+          // After 10 questions, check the score
+          if (stars >= 7) {
+            setCompleted(true);
+            playWinSound();
+          } else {
+            setGameOver(true);
+            playLoseSound();
+          }
+        } else if (index + 1 < shuffledQuestions.length) {
           setIndex((i) => i + 1);
           setTimeLeft(20);
-        } else if (stars < 10) {
-          setGameOver(true);
-          playLoseSound();
         }
       }, 2000);
     }
@@ -176,6 +191,7 @@ function PuncLevel2() {
     setGameOver(false);
     setSelectedAnswerIndex(null);
     setIsCorrect(null);
+    setQuestionCount(0); // Reset question count
 
     // Take the first 10 questions from puncLevel2 and shuffle them
     const selectedQuestions = shuffleArray(allQuestions).slice(0, 10);
@@ -191,6 +207,7 @@ function PuncLevel2() {
     setGameOver(false);
     setSelectedAnswerIndex(null);
     setIsCorrect(null);
+    setQuestionCount(0); // Reset question count
     // Take the first 10 questions from puncLevel2 and shuffle them
     const selectedQuestions = shuffleArray(allQuestions).slice(0, 10);
     setShuffledQuestions(selectedQuestions);
@@ -214,7 +231,7 @@ function PuncLevel2() {
       {completed && <Confetti width={width} height={height} />}
       <div className="flex-1 w-full flex flex-col items-center justify-center gap-8 p-8 border-8 rounded-xl border-black/50 bg-black/75">
         {/* Top Bar (Conditional Rendering) */}
-        {!showInstructions && !completed && !gameOver && (
+        {!showInstructions && !completed && !gameOver && questionCount < 10 && (
           <div className="w-[60%] flex justify-between items-center mb-6">
             <motion.div
               animate={timerControls}
@@ -272,8 +289,8 @@ function PuncLevel2() {
             </span>
             <p className="text-justify font-medium">
               Choose the correctly punctuated sentence from the given choices.
-              You have 20 seconds per question. Get 7 correct answers out of 10
-              to complete the level.
+              You have 20 seconds per question. Get at least 7 correct answers
+              out of 10 to complete the level.
             </p>
             <button
               onClick={handleStartGame}
@@ -289,15 +306,35 @@ function PuncLevel2() {
               Game {completed ? "Complete" : "Over"}!
             </p>
             <p style={{ fontFamily: "Arco" }}>Stars: {stars} / 10</p>
-            <button
-              onClick={handleRestart}
-              className="bg-green-500 text-white mt-4 px-6 py-3 rounded-xl hover:scale-95 transition text-xl"
-              style={{ fontFamily: "Arco" }}
-            >
-              Try Again
-            </button>
+            {completed && (
+              <div className="flex mt-4 gap-4 justify-center">
+                <button
+                  onClick={handleRestart}
+                  className="bg-green-500 text-white px-6 py-3 rounded-xl hover:scale-95 transition text-xl"
+                  style={{ fontFamily: "Arco" }}
+                >
+                  Play Again
+                </button>
+                <button
+                  onClick={() => navigate("/games/punctuation/level-3")}
+                  className="bg-yellow-500 text-white px-6 py-3 rounded-xl hover:scale-95 transition text-xl"
+                  style={{ fontFamily: "Arco" }}
+                >
+                  Continue
+                </button>
+              </div>
+            )}
+            {!completed && (
+              <button
+                onClick={handleRestart}
+                className="bg-green-500 text-white mt-4 px-6 py-3 rounded-xl hover:scale-95 transition text-xl"
+                style={{ fontFamily: "Arco" }}
+              >
+                Try Again
+              </button>
+            )}
           </div>
-        ) : shuffledQuestions.length > 0 ? (
+        ) : shuffledQuestions.length > 0 && questionCount < 10 ? (
           <div className="w-[60%] flex flex-col gap-6 text-white">
             <p className="text-3xl font-medium " style={{ fontFamily: "Arco" }}>
               Choose the correctly punctuated sentence.
