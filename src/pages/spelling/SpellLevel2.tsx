@@ -3,7 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { spellLevel2 as allQuestions } from "../../constants/seeder"; // Renamed import
 import type { CorrectWordQuestion } from "../../types"; // Updated type import
 import { shuffleArray } from "../../utils/array";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserStore } from "../../stores/useUserStore";
 import { markLevelComplete } from "../../utils/game";
 import Confetti from "react-confetti";
@@ -45,6 +45,7 @@ function SpellLevel2() {
   const { width, height } = useWindowSize();
   const timerControls = useAnimation();
   const { clickEnabled } = useSoundContext(); // Get clickEnabled from the context
+  const navigate = useNavigate();
 
   const [playCorrectSound] = useSound(correctSoundPath, {
     soundEnabled: clickEnabled,
@@ -57,11 +58,18 @@ function SpellLevel2() {
     soundEnabled: clickEnabled,
   });
 
+  const totalQuestions = 10; // Always ask 10 questions
+  const minStarsToPass = 7;
+  const maxStarsToPass = 10;
+
   useEffect(() => {
     // Take the first 10 questions and shuffle them
-    const selectedQuestions = shuffleArray(allQuestions).slice(0, 10);
+    const selectedQuestions = shuffleArray(allQuestions).slice(
+      0,
+      totalQuestions
+    );
     setShuffledQuestions(selectedQuestions);
-  }, [allQuestions]); // Added allQuestions to the dependency array
+  }, [allQuestions, totalQuestions]);
 
   useEffect(() => {
     if (
@@ -80,18 +88,17 @@ function SpellLevel2() {
         setTimeout(() => {
           setSelectedAnswer(null);
           setIsCorrect(null);
-          if (index + 1 === shuffledQuestions.length && stars < 10) {
-            setGameOver(true);
-            playLoseSound();
+          if (index + 1 === shuffledQuestions.length) {
+            if (stars >= minStarsToPass) {
+              setCompleted(true);
+              playWinSound();
+            } else {
+              setGameOver(true);
+              playLoseSound();
+            }
           } else if (index + 1 < shuffledQuestions.length) {
             setIndex((i) => i + 1);
             setTimeLeft(10); // Reset timer for the next question
-          } else if (stars === 10) {
-            setCompleted(true);
-            playWinSound();
-          } else {
-            setGameOver(true);
-            playLoseSound();
           }
         }, 2000);
       }
@@ -107,17 +114,14 @@ function SpellLevel2() {
     playWrongSound,
     playLoseSound,
     playWinSound,
+    minStarsToPass,
   ]);
 
   useEffect(() => {
-    if (stars === 10 && !completed) {
-      setCompleted(true);
-      playWinSound();
-      if (user?.username) {
-        markLevelComplete(user.username, "spelling", 1, setUser); // Changed level type
-      }
+    if (completed && user?.username) {
+      markLevelComplete(user.username, "spelling", 1, setUser, stars); // Changed level type
     }
-  }, [stars, user, setUser, completed, playWinSound]);
+  }, [completed, user, setUser]);
 
   const handleAnswer = (answer: string) => {
     if (selectedAnswer !== null || completed || gameOver || showInstructions)
@@ -135,15 +139,18 @@ function SpellLevel2() {
       setTimeout(() => {
         setSelectedAnswer(null);
         setIsCorrect(null);
-        if (stars === 10) {
-          setCompleted(true);
-          playWinSound();
-        } else if (index + 1 < shuffledQuestions.length) {
+        if (index + 1 < shuffledQuestions.length) {
           setIndex((i) => i + 1);
           setTimeLeft(10); // Reset timer for the next question
         } else {
-          setGameOver(true); // If all questions are done but not 10 stars
-          playLoseSound();
+          // All questions answered, check for completion
+          if (stars >= minStarsToPass) {
+            setCompleted(true);
+            playWinSound();
+          } else {
+            setGameOver(true); // If all questions are done but not enough stars
+            playLoseSound();
+          }
         }
       }, 2000);
     } else {
@@ -154,9 +161,15 @@ function SpellLevel2() {
         if (index + 1 < shuffledQuestions.length) {
           setIndex((i) => i + 1);
           setTimeLeft(10); // Reset timer for the next question
-        } else if (stars < 10) {
-          setGameOver(true);
-          playLoseSound();
+        } else {
+          // All questions answered, check for completion
+          if (stars >= minStarsToPass) {
+            setCompleted(true);
+            playWinSound();
+          } else {
+            setGameOver(true);
+            playLoseSound();
+          }
         }
       }, 2000);
     }
@@ -173,7 +186,10 @@ function SpellLevel2() {
     setIsCorrect(null);
 
     // Take the first 10 questions and shuffle them
-    const selectedQuestions = shuffleArray(allQuestions).slice(0, 10);
+    const selectedQuestions = shuffleArray(allQuestions).slice(
+      0,
+      totalQuestions
+    );
     setShuffledQuestions(selectedQuestions);
   };
 
@@ -187,7 +203,10 @@ function SpellLevel2() {
     setSelectedAnswer(null);
     setIsCorrect(null);
     // Take the first 10 questions and shuffle them
-    const selectedQuestions = shuffleArray(allQuestions).slice(0, 10);
+    const selectedQuestions = shuffleArray(allQuestions).slice(
+      0,
+      totalQuestions
+    );
     setShuffledQuestions(selectedQuestions);
   };
 
@@ -202,7 +221,7 @@ function SpellLevel2() {
       ? starColors[3]
       : starColors[4];
 
-  const progress = (stars / 10) * 100;
+  const progress = (stars / maxStarsToPass) * 100;
 
   return (
     <div className="w-screen h-screen flex flex-col items-center spelling p-8">
@@ -267,7 +286,8 @@ function SpellLevel2() {
             </span>
             <p className="text-justify font-medium">
               Choose the correct answer to the question. You have 10 seconds per
-              question. Get 7 correct answers out of 10 to complete the level.
+              question. Get at least 7 correct answers out of 10 to complete the
+              level.
             </p>
             <button
               onClick={handleStartGame}
@@ -282,18 +302,40 @@ function SpellLevel2() {
             <p style={{ fontFamily: "Arco" }}>
               Game {completed ? "Complete" : "Over"}!
             </p>
-            <p style={{ fontFamily: "Arco" }}>Stars: {stars} / 10</p>
-            <button
-              onClick={handleRestart}
-              className="bg-green-500 text-white mt-4 px-6 py-3 rounded-xl hover:scale-95 transition text-xl"
-              style={{ fontFamily: "Arco" }}
-            >
-              Try Again
-            </button>
+            <p style={{ fontFamily: "Arco" }}>
+              Stars: {stars} / {totalQuestions}
+            </p>
+            {completed && (
+              <div className="flex mt-4 gap-4 justify-center">
+                <button
+                  onClick={handleRestart}
+                  className="bg-green-500 text-white px-6 py-3 rounded-xl hover:scale-95 transition text-xl"
+                  style={{ fontFamily: "Arco" }}
+                >
+                  Play Again
+                </button>
+                <button
+                  onClick={() => navigate("/games/spelling/level-3")}
+                  className="bg-yellow-500 text-white px-6 py-3 rounded-xl hover:scale-95 transition text-xl"
+                  style={{ fontFamily: "Arco" }}
+                >
+                  Continue
+                </button>
+              </div>
+            )}
+            {!completed && (
+              <button
+                onClick={handleRestart}
+                className="bg-green-500 text-white mt-4 px-6 py-3 rounded-xl hover:scale-95 transition text-xl"
+                style={{ fontFamily: "Arco" }}
+              >
+                Try Again
+              </button>
+            )}
           </div>
         ) : shuffledQuestions.length > 0 ? (
           <div className="w-[60%] flex flex-col gap-6 text-white">
-            <p className="text-3xl font-medium italic">
+            <p className="text-3xl font-medium">
               {index + 1}. {shuffledQuestions[index].question}
             </p>
             <div className="grid gap-4" style={{ fontFamily: "Arco" }}>
