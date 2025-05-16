@@ -313,7 +313,7 @@ function CapLevel3() {
             <span className="text-3xl" style={{ fontFamily: "Arco" }}>
               Instructions
             </span>
-            <p className="text-justify font-medium">
+            <p className="text-justify text-3xl font-medium">
               Type the sentence with correct capitalization. You have 30 seconds
               per question. Get a minimum of 7 stars and a maximum of 10 stars
             </p>

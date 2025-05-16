@@ -315,7 +315,7 @@ function PuncLevel3() {
             <span className="text-3xl" style={{ fontFamily: "Arco" }}>
               Instructions
             </span>
-            <p className="text-justify font-medium">
+            <p className="text-justify text-3xl font-medium">
               Type the sentence exactly as it should be punctuated. You have 30
               seconds per question. Get a minimum of 7 stars (correct answers)
               out of 10 to complete the level.
@@ -360,15 +360,14 @@ function PuncLevel3() {
           <div className="w-[60%] flex flex-col gap-6 text-white">
             {feedback ? (
               <p
-                className={`text-5xl font-semibold ${
+                className={`text-5xl font-medium ${
                   isCorrect ? "text-green-500" : "text-red-500"
                 }`}
-                style={{ fontFamily: "Arco" }}
               >
                 {feedback}
               </p>
             ) : (
-              <p className="text-5xl" style={{ fontFamily: "Arco" }}>
+              <p className="text-5xl font-medium">
                 {allTenQuestions[questionIndex].incorrectSentence}
               </p>
             )}
@@ -385,7 +384,6 @@ function PuncLevel3() {
                 onChange={handleInputChange}
                 className=" w-full border-6 text-5xl font-medium bg-yellow-200 border-yellow-800 text-yellow-800 p-4 rounded-xl
                   focus:outline-none focus:ring-2 focus:ring-yellow-800/25 disabled:opacity-50"
-                style={{ fontFamily: "Arco" }}
                 disabled={!!feedback}
               />
             </form>

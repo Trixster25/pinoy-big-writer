@@ -339,7 +339,7 @@ function SpellLevel1() {
             <span className="text-3xl" style={{ fontFamily: "Arco" }}>
               Instructions
             </span>
-            <p className="text-justify font-medium">
+            <p className="text-justify text-3xl font-medium">
               Read the definition and choose the correct spelling. You have 10
               seconds per question. Get at least 7 correct answers out of 10 to
               complete the level.
@@ -411,7 +411,7 @@ function SpellLevel1() {
                   <button
                     key={idx}
                     onClick={() => handleAnswer(option)}
-                    className={`${bgClass} border-2 border-white text-2xl font-medium px-4 py-3 rounded-lg text-left transition`}
+                    className={`${bgClass} border-2 border-white text-3xl font-medium px-4 py-3 rounded-lg text-left transition`}
                     disabled={selectedAnswer !== null}
                   >
                     {option}

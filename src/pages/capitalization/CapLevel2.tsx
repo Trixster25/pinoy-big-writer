@@ -283,7 +283,7 @@ function CapLevel2() {
             <span className="text-3xl" style={{ fontFamily: "Arco" }}>
               Instructions
             </span>
-            <p className="text-justify font-medium">
+            <p className="text-justify text-3xl font-medium">
               Click the words that should be correctly capitalized. You have 15
               seconds per question. Get at least 7 correct answers out of 10 to
               complete the level.
@@ -331,7 +331,7 @@ function CapLevel2() {
           </div>
         ) : shuffledWords.length > 0 && questionsAnswered < 10 ? (
           <div className="w-[60%] flex flex-col gap-6 text-white items-center">
-            <div className="flex flex-wrap items-center justify-center gap-2 text-4xl font-medium text-yellow-400 mb-2">
+            <div className="flex flex-wrap items-center justify-center gap-2 text-5xl font-medium text-yellow-400 mb-2">
               {shuffledWords[index].prompt.split(" ").map((word, i) => (
                 <button
                   key={i}

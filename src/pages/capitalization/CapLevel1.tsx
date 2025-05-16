@@ -322,7 +322,7 @@ function CapLevel1() {
             <span className="text-3xl" style={{ fontFamily: "Arco" }}>
               Instructions
             </span>
-            <p className="text-justify font-medium">
+            <p className="text-justify text-3xl font-medium">
               Click “Capitalize” if the word should start with a capital letter
               or be capitalized, and click “Lowercase” if the words should
               remain written in lowercase. You have 10 seconds per question. Get
@@ -384,7 +384,7 @@ function CapLevel1() {
                 shuffledWords[index].text
               )}
             </p>
-            <div className="grid gap-4" style={{ fontFamily: "Arco" }}>
+            <div className="grid gap-4 ">
               {[true, false].map((choice, idx) => {
                 let bgClass = "bg-white/20";
                 if (selected !== null) {
@@ -400,7 +400,7 @@ function CapLevel1() {
                   <button
                     key={idx}
                     onClick={() => handleAnswer(choice)}
-                    className={`${bgClass} border-2 border-white text-2xl font-medium px-4 py-3 rounded-lg text-left transition`}
+                    className={`${bgClass} border-2 border-white text-3xl font-medium px-4 py-3 rounded-lg text-left transition`}
                     disabled={selected !== null}
                   >
                     {choice ? "Capitalize" : "Lowercase"}

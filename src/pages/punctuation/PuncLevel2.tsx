@@ -287,7 +287,7 @@ function PuncLevel2() {
             <span className="text-3xl" style={{ fontFamily: "Arco" }}>
               Instructions
             </span>
-            <p className="text-justify font-medium">
+            <p className="text-justify text-3xl font-medium">
               Choose the correctly punctuated sentence from the given choices.
               You have 20 seconds per question. Get at least 7 correct answers
               out of 10 to complete the level.
@@ -336,7 +336,7 @@ function PuncLevel2() {
           </div>
         ) : shuffledQuestions.length > 0 && questionCount < 10 ? (
           <div className="w-[60%] flex flex-col gap-6 text-white">
-            <p className="text-3xl font-medium " style={{ fontFamily: "Arco" }}>
+            <p className="text-3xl font-medium ">
               Choose the correctly punctuated sentence.
             </p>
             <div className="grid grid-cols-2 gap-4">
@@ -359,7 +359,7 @@ function PuncLevel2() {
                   <button
                     key={optionIndex}
                     onClick={() => handleAnswer(optionIndex)}
-                    className={`${bgClass} border-2 border-white text-2xl font-medium px-4 py-3 rounded-lg text-left transition`}
+                    className={`${bgClass} border-2 border-white text-3xl font-medium px-4 py-3 rounded-lg text-left transition`}
                     disabled={selectedAnswerIndex !== null}
                   >
                     {String.fromCharCode(65 + optionIndex)}. {option}

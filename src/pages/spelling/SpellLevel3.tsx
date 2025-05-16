@@ -301,7 +301,7 @@ function SpellLevel3() {
             <span className="text-3xl" style={{ fontFamily: "Arco" }}>
               Instructions
             </span>
-            <p className="text-justify font-medium">
+            <p className="text-justify text-3xl font-medium">
               Listen to the word, and then type the correct spelling of the word
               shown with scrambled letters. You have 20 seconds per question.
               Get a minimum of 7 correct answers out of 10 to complete the
@@ -346,14 +346,13 @@ function SpellLevel3() {
           <div className="w-[60%] flex flex-col gap-6 text-white items-center">
             <div className="flex items-center gap-4">
               <p
-                className={`text-5xl font-medium italic ${
+                className={`text-5xl font-medium ${
                   isCorrect === null
                     ? ""
                     : isCorrect
                     ? "text-green-500"
                     : "text-red-500"
                 }`}
-                style={{ fontFamily: "Arco" }}
               >
                 {isCorrect === null
                   ? shuffledQuestions[index].scrambled
@@ -382,7 +381,6 @@ function SpellLevel3() {
                 className=" w-full border-6 text-5xl font-medium bg-yellow-200 border-yellow-800 text-yellow-800 p-4 rounded-xl"
                 placeholder="Type your answer here"
                 disabled={isCorrect !== null}
-                style={{ fontFamily: "Arco" }}
               />
             </form>
             <button

@@ -284,7 +284,7 @@ function SpellLevel2() {
             <span className="text-3xl" style={{ fontFamily: "Arco" }}>
               Instructions
             </span>
-            <p className="text-justify font-medium">
+            <p className="text-justify text-3xl font-medium">
               Choose the correct answer to the question. You have 15 seconds per
               question. Get at least 7 correct answers out of 10 to complete the
               level.
@@ -335,10 +335,10 @@ function SpellLevel2() {
           </div>
         ) : shuffledQuestions.length > 0 ? (
           <div className="w-[60%] flex flex-col gap-6 text-white">
-            <p className="text-3xl font-medium">
+            <p className="text-5xl font-medium">
               {index + 1}. {shuffledQuestions[index].question}
             </p>
-            <div className="grid gap-4" style={{ fontFamily: "Arco" }}>
+            <div className="grid gap-4">
               {shuffledQuestions[index].options.map((option, idx) => {
                 let bgClass = "bg-white/20";
                 if (selectedAnswer !== null) {
@@ -358,7 +358,7 @@ function SpellLevel2() {
                   <button
                     key={idx}
                     onClick={() => handleAnswer(option)}
-                    className={`${bgClass} border-2 border-white text-2xl font-medium px-4 py-3 rounded-lg text-left transition`}
+                    className={`${bgClass} border-2 border-white text-3xl font-medium px-4 py-3 rounded-lg text-left transition`}
                     disabled={selectedAnswer !== null}
                   >
                     {option}
