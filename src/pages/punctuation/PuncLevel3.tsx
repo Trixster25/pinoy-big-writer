@@ -28,12 +28,12 @@ const starColors = [
 
 function PuncLevel3() {
   const [showInstructions, setShowInstructions] = useState(true);
-  const [index, setIndex] = useState(0);
+  const [questionIndex, setQuestionIndex] = useState(0);
   const [stars, setStars] = useState(0);
   const [completed, setCompleted] = useState(false);
   const [timeLeft, setTimeLeft] = useState(30); // Timer per question (30 seconds)
   const [gameOver, setGameOver] = useState(false);
-  const [shuffledQuestions, setShuffledQuestions] = useState<Word3[]>([]);
+  const [allTenQuestions, setAllTenQuestions] = useState<Word3[]>([]);
   const [typedSentence, setTypedSentence] = useState("");
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [feedback, setFeedback] = useState<string | null>(null);
@@ -67,7 +67,7 @@ function PuncLevel3() {
   useEffect(() => {
     // Take the first 10 questions and shuffle them
     const selectedQuestions = shuffleArray(allQuestions).slice(0, 10);
-    setShuffledQuestions(selectedQuestions);
+    setAllTenQuestions(selectedQuestions);
   }, [allQuestions]);
 
   useEffect(() => {
@@ -75,14 +75,15 @@ function PuncLevel3() {
       !showInstructions &&
       !completed &&
       !gameOver &&
-      shuffledQuestions.length > 0
+      allTenQuestions.length > 0 &&
+      questionIndex < allTenQuestions.length
     ) {
       if (timeLeft > 0) {
         const timer = setTimeout(() => setTimeLeft((t) => t - 1), 1000);
         return () => clearTimeout(timer);
       }
       if (timeLeft === 0) {
-        const currentQuestion = shuffledQuestions[index];
+        const currentQuestion = allTenQuestions[questionIndex];
         setIsCorrect(false);
         setFeedback(`${currentQuestion.correctSentence}`);
         playWrongSound();
@@ -90,21 +91,29 @@ function PuncLevel3() {
           setIsCorrect(null);
           setFeedback(null);
           setTypedSentence("");
-          if (index + 1 === shuffledQuestions.length && stars < 10) {
-            setGameOver(true);
-            playLoseSound();
-          } else if (index + 1 < shuffledQuestions.length) {
-            setIndex((i) => i + 1);
+          if (questionIndex + 1 === allTenQuestions.length) {
+            if (stars < 7) {
+              setGameOver(true);
+              playLoseSound();
+            } else {
+              setCompleted(true);
+              playWinSound();
+              if (user?.username) {
+                markLevelComplete(
+                  user.username,
+                  "punctuation",
+                  2,
+                  setUser,
+                  stars
+                ); // Assuming this is level 3, so index 2
+              }
+            }
+          } else {
+            setQuestionIndex((i) => i + 1);
             setTimeLeft(30);
             if (inputRef.current) {
               inputRef.current.focus();
             }
-          } else if (stars === 10) {
-            setCompleted(true);
-            playWinSound();
-          } else {
-            setGameOver(true);
-            playLoseSound();
           }
         }, 2000);
       }
@@ -114,23 +123,21 @@ function PuncLevel3() {
     completed,
     gameOver,
     showInstructions,
-    index,
-    shuffledQuestions,
+    questionIndex,
+    allTenQuestions,
     stars,
     playWrongSound,
     playLoseSound,
     playWinSound,
+    user,
+    setUser,
   ]);
 
   useEffect(() => {
-    if (stars === 10 && !completed) {
-      setCompleted(true);
-      playWinSound();
-      if (user?.username) {
-        markLevelComplete(user.username, "punctuation", 2, setUser); // Assuming this is level 3, so index 2
-      }
+    if (completed && user?.username) {
+      markLevelComplete(user.username, "punctuation", 2, setUser, stars); // Assuming this is level 3, so index 2
     }
-  }, [stars, user, setUser, completed, playWinSound]);
+  }, [completed, stars, user, setUser]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTypedSentence(event.target.value);
@@ -139,7 +146,7 @@ function PuncLevel3() {
   const handleCheckAnswer = () => {
     if (completed || gameOver || showInstructions || feedback) return;
 
-    const currentQuestion = shuffledQuestions[index];
+    const currentQuestion = allTenQuestions[questionIndex];
     // Make the comparison case-insensitive
     const isAnswerCorrect =
       typedSentence.trim().toLowerCase() ===
@@ -155,18 +162,20 @@ function PuncLevel3() {
         setIsCorrect(null);
         setFeedback(null);
         setTypedSentence("");
-        if (stars + 1 === 10) {
-          setCompleted(true);
-          playWinSound();
-        } else if (index + 1 < shuffledQuestions.length) {
-          setIndex((i) => i + 1);
+        if (questionIndex + 1 === allTenQuestions.length) {
+          if (stars + 1 >= 7) {
+            setCompleted(true);
+            playWinSound();
+          } else {
+            setGameOver(true);
+            playLoseSound();
+          }
+        } else {
+          setQuestionIndex((i) => i + 1);
           setTimeLeft(30);
           if (inputRef.current) {
             inputRef.current.focus();
           }
-        } else {
-          setGameOver(true);
-          playLoseSound();
         }
       }, 2000);
     } else {
@@ -175,15 +184,20 @@ function PuncLevel3() {
         setIsCorrect(null);
         setFeedback(null);
         setTypedSentence("");
-        if (index + 1 < shuffledQuestions.length) {
-          setIndex((i) => i + 1);
+        if (questionIndex + 1 === allTenQuestions.length) {
+          if (stars < 7) {
+            setGameOver(true);
+            playLoseSound();
+          } else {
+            setCompleted(true);
+            playWinSound();
+          }
+        } else {
+          setQuestionIndex((i) => i + 1);
           setTimeLeft(30);
           if (inputRef.current) {
             inputRef.current.focus();
           }
-        } else if (stars < 10) {
-          setGameOver(true);
-          playLoseSound();
         }
       }, 2000);
     }
@@ -191,7 +205,7 @@ function PuncLevel3() {
 
   const handleStartGame = () => {
     setShowInstructions(false);
-    setIndex(0);
+    setQuestionIndex(0);
     setStars(0);
     setTimeLeft(30);
     setCompleted(false);
@@ -200,7 +214,7 @@ function PuncLevel3() {
     setFeedback(null);
     setTypedSentence("");
     const selectedQuestions = shuffleArray(allQuestions).slice(0, 10);
-    setShuffledQuestions(selectedQuestions);
+    setAllTenQuestions(selectedQuestions);
     setTimeout(() => {
       if (inputRef.current) {
         inputRef.current.focus();
@@ -210,7 +224,7 @@ function PuncLevel3() {
 
   const handleRestart = () => {
     setShowInstructions(false);
-    setIndex(0);
+    setQuestionIndex(0);
     setStars(0);
     setTimeLeft(30);
     setCompleted(false);
@@ -219,7 +233,7 @@ function PuncLevel3() {
     setFeedback(null);
     setTypedSentence("");
     const selectedQuestions = shuffleArray(allQuestions).slice(0, 10);
-    setShuffledQuestions(selectedQuestions);
+    setAllTenQuestions(selectedQuestions);
     setTimeout(() => {
       if (inputRef.current) {
         inputRef.current.focus();
@@ -303,8 +317,8 @@ function PuncLevel3() {
             </span>
             <p className="text-justify font-medium">
               Type the sentence exactly as it should be punctuated. You have 30
-              seconds per question. Get 7 correct answers out of 10 to complete
-              the level.
+              seconds per question. Get a minimum of 7 stars (correct answers)
+              out of 10 to complete the level.
             </p>
             <button
               onClick={handleStartGame}
@@ -320,15 +334,29 @@ function PuncLevel3() {
               Game {completed ? "Complete" : "Over"}!
             </p>
             <p style={{ fontFamily: "Arco" }}>Stars: {stars} / 10</p>
-            <button
-              onClick={handleRestart}
-              className="bg-green-500 text-white mt-4 px-6 py-3 rounded-xl hover:scale-95 transition text-xl"
-              style={{ fontFamily: "Arco" }}
-            >
-              Try Again
-            </button>
+            {completed && (
+              <div className="flex mt-4 gap-4 justify-center">
+                <button
+                  onClick={handleRestart}
+                  className="bg-green-500 text-white px-6 py-3 rounded-xl hover:scale-95 transition text-xl"
+                  style={{ fontFamily: "Arco" }}
+                >
+                  Play Again
+                </button>
+              </div>
+            )}
+            {!completed && (
+              <button
+                onClick={handleRestart}
+                className="bg-green-500 text-white mt-4 px-6 py-3 rounded-xl hover:scale-95 transition text-xl"
+                style={{ fontFamily: "Arco" }}
+              >
+                Try Again
+              </button>
+            )}
           </div>
-        ) : shuffledQuestions.length > 0 ? (
+        ) : allTenQuestions.length > 0 &&
+          questionIndex < allTenQuestions.length ? (
           <div className="w-[60%] flex flex-col gap-6 text-white">
             {feedback ? (
               <p
@@ -341,7 +369,7 @@ function PuncLevel3() {
               </p>
             ) : (
               <p className="text-5xl" style={{ fontFamily: "Arco" }}>
-                {shuffledQuestions[index].incorrectSentence}
+                {allTenQuestions[questionIndex].incorrectSentence}
               </p>
             )}
             <form
