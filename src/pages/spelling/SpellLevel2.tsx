@@ -267,7 +267,7 @@ function SpellLevel2() {
             </span>
             <p className="text-justify font-medium">
               Choose the correct answer to the question. You have 10 seconds per
-              question. Get 10 correct answers to complete the level.
+              question. Get 7 correct answers out of 10 to complete the level.
             </p>
             <button
               onClick={handleStartGame}

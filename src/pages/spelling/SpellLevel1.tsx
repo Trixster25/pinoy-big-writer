@@ -310,8 +310,8 @@ function SpellLevel1() {
             </span>
             <p className="text-justify font-medium">
               Read the definition and choose the correct spelling. You have 10
-              seconds per question. Get 10 correct answers to complete the
-              level.
+              seconds per question. Get 7 correct answers out of 10 to complete
+              the level.
             </p>
             <button
               onClick={handleStartGame}

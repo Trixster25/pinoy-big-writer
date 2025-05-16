@@ -303,8 +303,8 @@ function PuncLevel3() {
             </span>
             <p className="text-justify font-medium">
               Type the sentence exactly as it should be punctuated. You have 30
-              seconds per question. Get 10 correct sentences to complete the
-              level.
+              seconds per question. Get 7 correct answers out of 10 to complete
+              the level.
             </p>
             <button
               onClick={handleStartGame}

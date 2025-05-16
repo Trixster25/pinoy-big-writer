@@ -304,7 +304,7 @@ function SpellLevel3() {
             <p className="text-justify font-medium">
               Listen to the word, and then type the correct spelling of the word
               shown with scrambled letters. You have 20 seconds per question.
-              Get 10 correct answers to complete the level.
+              Get 7 correct answers out of 10 to complete the level.
             </p>
             <button
               onClick={handleStartGame}

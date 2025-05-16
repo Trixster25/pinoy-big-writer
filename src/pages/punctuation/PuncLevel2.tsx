@@ -272,8 +272,8 @@ function PuncLevel2() {
             </span>
             <p className="text-justify font-medium">
               Choose the correctly punctuated sentence from the given choices.
-              You have 20 seconds per question. Get 10 correct answers to
-              complete the level.
+              You have 20 seconds per question. Get 7 correct answers out of 10
+              to complete the level.
             </p>
             <button
               onClick={handleStartGame}
