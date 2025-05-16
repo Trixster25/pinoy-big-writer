@@ -23,7 +23,8 @@ export async function markLevelComplete(
   username: string,
   room: Room,
   levelIndex: number,
-  setUserState: (u: User) => void
+  setUserState: (u: User) => void,
+  starsAchieved: number // Add this parameter to receive the number of stars
 ) {
   const user = getLocalStorageItem("user") as User | null;
   if (!user) {
@@ -43,6 +44,11 @@ export async function markLevelComplete(
   const achievements = [...user.achievements];
   let additionalPoints = 0;
 
+  // Points based on stars achieved (maximum 10 stars)
+  const pointsForStars = Math.min(starsAchieved, 10) * 5; // Example: 5 points per star
+  additionalPoints += pointsForStars;
+  console.log(`Points for ${starsAchieved} stars: ${pointsForStars}`);
+
   // Per-level achievement
   const levelKey = `completed${capitalize(room)}Level${
     levelIndex + 1
@@ -51,7 +57,7 @@ export async function markLevelComplete(
   if (updatedRoomLevels[levelIndex] && !achievements.includes(levelKey)) {
     achievements.push(levelKey);
     console.log(`Achievement unlocked: ${levelKey}`);
-    additionalPoints += 10; // ✅ Add 10 points for new level completion
+    additionalPoints += 10; // Add 10 points for new level completion
   }
 
   // Full-room achievement
@@ -59,14 +65,14 @@ export async function markLevelComplete(
   if (updatedRoomLevels.every((v) => v) && !achievements.includes(fullKey)) {
     achievements.push(fullKey);
     console.log(`Achievement unlocked: ${fullKey}`);
-    additionalPoints += 30; // ✅ Optional: Add bonus points for full room
+    additionalPoints += 30; // Optional: Add bonus points for full room
   }
 
   const updatedUser: User = {
     ...user,
     progress: newRoomProgress,
     achievements,
-    points: user.points + additionalPoints, // ✅ Update user points
+    points: user.points + additionalPoints, // Update user points
   };
 
   setLocalStorageItem("user", updatedUser);
@@ -76,10 +82,13 @@ export async function markLevelComplete(
     await updateUser(username, {
       progress: newRoomProgress,
       achievements: updatedUser.achievements,
-      points: updatedUser.points, // ✅ Sync new points to backend
+      points: updatedUser.points, // Sync new points to backend
     });
     console.log(`Progress synced for ${room}[${levelIndex}]`);
   } catch (e) {
     console.error("Firestore update failed:", e);
   }
 }
+
+// Example of how you might call the function with the number of stars:
+// markLevelComplete("testUser", "capitalization", 0, setUser, 3);
