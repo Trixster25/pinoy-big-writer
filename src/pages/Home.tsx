@@ -14,7 +14,7 @@ import {
 import type { User } from "../types";
 import { formatRank } from "../utils/format";
 import { FirestoreError } from "firebase/firestore";
-import { getUsers } from "../services/User";
+import { getUsers, getUser } from "../services/User";
 
 export default function Home() {
   const { user, setUser } = useUserStore();
@@ -33,22 +33,32 @@ export default function Home() {
   useEffect(() => {
     const doFetchRank = async () => {
       try {
+        // 1. Fetch latest user data from Firebase
+        const latestUser = await getUser(user!.username);
+        if (!latestUser) {
+          console.error("User not found in Firestore");
+          return;
+        }
+
+        // 2. Fetch all users to calculate ranks
         const usersData = await getUsers();
-        // sort descending by points
         const sorted = usersData
           .map((u) => ({ username: u.username, points: u.points || 0 }))
           .sort((a, b) => b.points - a.points);
-        // find my position
-        const me = sorted.findIndex((u) => u.username === user?.username);
+
+        // 3. Find the updated user's rank
+        const me = sorted.findIndex((u) => u.username === latestUser.username);
         if (me >= 0) {
           const newRank = me + 1;
           const newPoints = sorted[me].points;
-          // write into store + localStorage
+
           const updated: User = {
-            ...user!,
+            ...latestUser,
             ranking: newRank,
             points: newPoints,
           };
+
+          // 4. Update app state and localStorage
           setUser(updated);
           setLocalStorageItem("user", updated);
         }
