@@ -903,7 +903,7 @@ export const practiceQuestions: Question[] = [
       "the team played hard but lost the game.",
       "The team played hard, but lost the Game",
     ],
-    answerIndex: 0,
+    answerIndex: 1,
   },
   {
     question: "Which sentence is correctly written?",
@@ -1088,10 +1088,10 @@ export const practiceQuestions: Question[] = [
   {
     question: "Which sentence is correctly written?",
     choices: [
-      "I cant believe how quickly the time has passed.",
-      "I can't believe how quickly the time has passed.",
-      "I can’t believe how quickly the time has passed.",
-      "i can’t believe how quickly the time has passed.",
+      "A. I cant believe how quickly the time has passed.",
+      "B. i can't believe, how quickly the time has passed.",
+      "C. I can’t believe how quickly the time has passed.",
+      "D. i can’t believe how quickly the time has passed.",
     ],
     answerIndex: 2,
   },
@@ -1148,22 +1148,22 @@ export const practiceQuestions: Question[] = [
   {
     question: "Which sentence is correctly written?",
     choices: [
-      "The store is closed on Sunday.",
+      "The store is Closed on Sunday.",
       "The store is closed on sunday.",
       "The store is closed on Sunday.",
-      "The store is closed on Sunday.",
+      "The store is closed on Sunday",
     ],
-    answerIndex: 0,
+    answerIndex: 2,
   },
   {
     question: "Which sentence is correctly written?",
     choices: [
-      "I want to eat pizza and pasta for dinner.",
-      "I want to eat pizza and pasta for dinner.",
-      "I want to eat pizza and pasta for dinner.",
+      "I want to eat Pizza and pasta for dinner.",
+      "I want to eat pizza and Pasta for dinner.",
+      "I want to eat pizza and pasta for Dinner.",
       "I want to eat pizza and pasta for dinner.",
     ],
-    answerIndex: 0,
+    answerIndex: 3,
   },
   {
     question: "Which sentence is correctly written?",
@@ -1178,22 +1178,22 @@ export const practiceQuestions: Question[] = [
   {
     question: "Which sentence is correctly written?",
     choices: [
-      "Can you help me with this exercise?",
+      "Can you help me with this exrcise?",
       "Can you help me with this excersize?",
-      "Can you help me with this excersize?",
+      "Can you help me with this excerzise?",
       "Can you help me with this exercise?",
     ],
-    answerIndex: 0,
+    answerIndex: 3,
   },
   {
     question: "Which sentence is correctly written?",
     choices: [
-      "We met at the café for a coffee.",
-      "We met at the café for a coffee.",
+      "We met at the café for a Coffee.",
+      "We met at the Café for a coffee.",
       "We met at the cafe for a coffee.",
-      "We met at the café for a coffee.",
+      "We met at the café for A coffee.",
     ],
-    answerIndex: 0,
+    answerIndex: 2,
   },
   {
     question: "Which sentence is correctly written?",
