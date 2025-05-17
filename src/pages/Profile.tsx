@@ -14,6 +14,8 @@ import { IoPerson } from "react-icons/io5";
 import { allAchievementsDisplayData } from "../constants/seeder";
 import { getUsers, updateUser } from "../services/User";
 import { FirestoreError } from "firebase/firestore";
+import { downloadCompletionCertificatePDF } from "../utils/pdf";
+import { IoMdDownload } from "react-icons/io";
 
 const relevantAchievements: Achievements[] = [
   "completedAllCapitalization",
@@ -283,12 +285,27 @@ export default function Profile() {
                       <FaLock className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-3xl" />
                     )}
                   </div>
-                  <span
-                    className="text-lg font-semibold text-center text-white"
-                    style={{ fontFamily: "Arco" }}
-                  >
-                    {data?.title || "Locked"}
-                  </span>
+                  <div className={`flex items-center justify-center gap-2`}>
+                    <span
+                      className="text-lg font-semibold text-center text-white"
+                      style={{ fontFamily: "Arco" }}
+                    >
+                      {data?.title || "Locked"}
+                    </span>
+                    {achievementKey === "completedAllLevels" &&
+                      achieved &&
+                      user && (
+                        <button
+                          className="bg-yellow-500 text-white p-2  rounded-xl  text-xl hover:scale-90"
+                          style={{ fontFamily: "Arco" }}
+                          onClick={() =>
+                            downloadCompletionCertificatePDF(user?.username)
+                          }
+                        >
+                          <IoMdDownload />
+                        </button>
+                      )}
+                  </div>
                 </div>
               );
             })}

@@ -215,7 +215,7 @@ function Board() {
           Star board
           <FaStar className="text-[#F3B73F]" />
         </span>
-        <div className="flex-1 flex items-center justify-end">
+        {/* <div className="flex-1 flex items-center justify-end">
           {userAchievements?.includes("completedAllLevels") &&
             tab == "Achievements" &&
             currentUserName !== null && (
@@ -229,7 +229,7 @@ function Board() {
                 Download Certificate
               </button>
             )}
-        </div>
+        </div> */}
       </div>
 
       {/* Content */}
