@@ -15,6 +15,7 @@ import type { User } from "../types";
 import { formatRank } from "../utils/format";
 import { FirestoreError } from "firebase/firestore";
 import { getUsers, getUser } from "../services/User";
+import { useScreenSize } from "../layouts/ScreenSizeProvider";
 
 export default function Home() {
   const { user, setUser } = useUserStore();
@@ -75,15 +76,31 @@ export default function Home() {
     }
   }, [user, setUser]);
 
+  const { isMediumScreen } = useScreenSize();
+
   return (
-    <div className="flex flex-col gap-8 w-screen h-screen background p-8">
+    <div
+      className={`flex flex-col w-screen h-screen background ${
+        isMediumScreen ? "p-4 gap-2" : "p-8 gap-8"
+      }`}
+    >
       <div className="self-center w-[90%] flex justify-between ">
-        <div className="flex items-center justify-center gap-4 bg-black/50 rounded-xl px-4 py-2">
+        <motion.div
+          className="flex items-center justify-center gap-4 bg-black/50 rounded-xl px-4 py-2"
+          initial={{ y: -100 }}
+          animate={{ y: 0 }}
+          whileHover={{ scale: 1.05 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+          }}
+        >
           <img src={user?.avatar} alt="" className="w-10 h-10  rounded-full " />
           <span className="text-2xl text-white" style={{ fontFamily: "Arco" }}>
             {user?.username}
           </span>
-        </div>
+        </motion.div>
         <div className="flex items-center gap-14">
           <Link to="/board/ranking">
             <motion.div
@@ -140,8 +157,9 @@ export default function Home() {
             <IoSettings className="text-3xl text-white" />
           </motion.button>
         </Link>
+
         <div className="flex-1 flex justify-center">
-          <img src="house.png" alt="" className="w-[325px]" />
+          <img src="house.png" alt="" className="w-[20vw]" />
         </div>
 
         <Link to="/profile">
@@ -161,77 +179,151 @@ export default function Home() {
         </Link>
       </div>
 
-      <div className="flex-1 flex items-center justify-around">
-        <Link to="/vault">
-          <motion.div
-            className="flex flex-col min-h-[180px] min-w-[350px] bg-blue-500 rounded-xl border-6 border-black cursor-pointer"
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            whileHover={{ scale: 1.05 }}
-            transition={{
-              type: "spring",
-              stiffness: 100,
-              damping: 10,
-            }}
-          >
-            <div className="flex-1 flex justify-center items-center">
-              <FaFolderOpen className="text-6xl text-white" />
-            </div>
-            <div
-              className="text-center p-2 border-t-4 border-black bg-white text-blue-500"
-              style={{ fontFamily: "Arco" }}
+      {!isMediumScreen ? (
+        <div className="flex-1 flex items-center justify-around">
+          <Link to="/vault">
+            <motion.div
+              className="flex flex-col min-h-[180px] min-w-[350px] bg-blue-500 rounded-xl border-6 border-black cursor-pointer"
+              initial={{ y: -100 }}
+              animate={{ y: 0 }}
+              whileHover={{ scale: 1.05 }}
+              transition={{
+                type: "spring",
+                stiffness: 100,
+                damping: 10,
+              }}
             >
-              Stock Knowledge Vault
-            </div>
-          </motion.div>
-        </Link>
-        <Link to="/games">
-          <motion.div
-            className="flex flex-col min-h-[180px] min-w-[350px] bg-[#903145] rounded-xl border-6 border-black cursor-pointer"
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            whileHover={{ scale: 1.05 }}
-            transition={{
-              type: "spring",
-              stiffness: 100,
-              damping: 10,
-            }}
-          >
-            <div className="flex-1 flex justify-center items-center">
-              <BsDoorOpenFill className="text-6xl text-white" />
-            </div>
-            <div
-              className="text-center p-2 border-t-4 border-black bg-white text-[#903145]"
-              style={{ fontFamily: "Arco" }}
+              <div className="flex-1 flex justify-center items-center">
+                <FaFolderOpen className="text-6xl text-white" />
+              </div>
+              <div
+                className="text-center p-2 border-t-4 border-black bg-white text-blue-500"
+                style={{ fontFamily: "Arco" }}
+              >
+                Stock Knowledge Vault
+              </div>
+            </motion.div>
+          </Link>
+          <Link to="/games">
+            <motion.div
+              className="flex flex-col min-h-[180px] min-w-[350px] bg-[#903145] rounded-xl border-6 border-black cursor-pointer"
+              initial={{ y: -100 }}
+              animate={{ y: 0 }}
+              whileHover={{ scale: 1.05 }}
+              transition={{
+                type: "spring",
+                stiffness: 100,
+                damping: 10,
+              }}
             >
-              Games
-            </div>
-          </motion.div>
-        </Link>
-        <Link to="/overview">
-          <motion.div
-            className="flex flex-col min-h-[180px] min-w-[350px] bg-green-500 rounded-xl border-6 border-black cursor-pointer"
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            whileHover={{ scale: 1.05 }}
-            transition={{
-              type: "spring",
-              stiffness: 100,
-              damping: 10,
-            }}
-          >
-            <div className="flex-1 flex justify-center items-center">
-              <MdAssignment className="text-6xl text-white" />
-            </div>
-            <div
-              className="text-center p-2 border-t-4 border-black bg-white text-green-500"
-              style={{ fontFamily: "Arco" }}
+              <div className="flex-1 flex justify-center items-center">
+                <BsDoorOpenFill className="text-6xl text-white" />
+              </div>
+              <div
+                className="text-center p-2 border-t-4 border-black bg-white text-[#903145]"
+                style={{ fontFamily: "Arco" }}
+              >
+                Games
+              </div>
+            </motion.div>
+          </Link>
+          <Link to="/overview">
+            <motion.div
+              className="flex flex-col min-h-[180px] min-w-[350px] bg-green-500 rounded-xl border-6 border-black cursor-pointer"
+              initial={{ y: -100 }}
+              animate={{ y: 0 }}
+              whileHover={{ scale: 1.05 }}
+              transition={{
+                type: "spring",
+                stiffness: 100,
+                damping: 10,
+              }}
             >
-              Game Overview
-            </div>
-          </motion.div>
-        </Link>
-      </div>
+              <div className="flex-1 flex justify-center items-center">
+                <MdAssignment className="text-6xl text-white" />
+              </div>
+              <div
+                className="text-center p-2 border-t-4 border-black bg-white text-green-500"
+                style={{ fontFamily: "Arco" }}
+              >
+                Game Overview
+              </div>
+            </motion.div>
+          </Link>
+        </div>
+      ) : (
+        <div className="flex-1 flex items-center justify-around">
+          <Link to="/vault">
+            <motion.div
+              className="flex flex-col min-h-[60px] min-w-[250px] bg-blue-500 rounded-xl border-6 border-black cursor-pointer"
+              initial={{ y: -100 }}
+              animate={{ y: 0 }}
+              whileHover={{ scale: 1.05 }}
+              transition={{
+                type: "spring",
+                stiffness: 100,
+                damping: 10,
+              }}
+            >
+              <div className="flex-1 flex justify-center items-center">
+                <FaFolderOpen className="text-6xl text-white" />
+              </div>
+              <div
+                className="text-center p-2 border-t-4 border-black bg-white text-blue-500"
+                style={{ fontFamily: "Arco" }}
+              >
+                Stock Knowledge Vault
+              </div>
+            </motion.div>
+          </Link>
+          <Link to="/games">
+            <motion.div
+              className="flex flex-col min-h-[60px] min-w-[250px] bg-[#903145] rounded-xl border-6 border-black cursor-pointer"
+              initial={{ y: -100 }}
+              animate={{ y: 0 }}
+              whileHover={{ scale: 1.05 }}
+              transition={{
+                type: "spring",
+                stiffness: 100,
+                damping: 10,
+              }}
+            >
+              <div className="flex-1 flex justify-center items-center">
+                <BsDoorOpenFill className="text-6xl text-white" />
+              </div>
+              <div
+                className="text-center p-2 border-t-4 border-black bg-white text-[#903145]"
+                style={{ fontFamily: "Arco" }}
+              >
+                Games
+              </div>
+            </motion.div>
+          </Link>
+          <Link to="/overview">
+            <motion.div
+              className="flex flex-col min-h-[60px] min-w-[250px] bg-green-500 rounded-xl border-6 border-black cursor-pointer"
+              initial={{ y: -100 }}
+              animate={{ y: 0 }}
+              whileHover={{ scale: 1.05 }}
+              transition={{
+                type: "spring",
+                stiffness: 100,
+                damping: 10,
+              }}
+            >
+              <div className="flex-1 flex justify-center items-center">
+                <MdAssignment className="text-6xl text-white" />
+              </div>
+              <div
+                className="text-center p-2 border-t-4 border-black bg-white text-green-500"
+                style={{ fontFamily: "Arco" }}
+              >
+                Game Overview
+              </div>
+            </motion.div>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

@@ -33,6 +33,7 @@ import PuncVault from "./pages/punctuation/PuncVault";
 import SpellVault from "./pages/spelling/SpellVault";
 import Board from "./pages/Board";
 import RotateScreen from "./pages/RotateScreen"; // Assuming you create this component
+import { ScreenSizeProvider } from "./layouts/ScreenSizeProvider";
 
 const App = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768); // Adjust breakpoint as needed
@@ -55,56 +56,70 @@ const App = () => {
 
   return (
     <Router>
-      <SoundProvider>
-        <Routes>
-          {/* Public routes */}
-          <Route path="/" element={<Loading />} />
-          <Route path="/overview" element={<Overview />} />
-          <Route path="/login" element={<Login />} />
+      <ScreenSizeProvider>
+        <SoundProvider>
+          <Routes>
+            {/* Public routes */}
+            <Route path="/" element={<Loading />} />
+            <Route path="/overview" element={<Overview />} />
+            <Route path="/login" element={<Login />} />
 
-          {/* Private routes */}
-          <Route element={<PrivateRoute />}>
-            <Route path="/home" element={<Home />} />
-            <Route path="/vault" element={<Vault />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/games" element={<Games />} />
-            <Route path="/games/capitalization" element={<Capitalization />} />
-            <Route path="/games/punctuation" element={<Punctuation />} />
-            <Route path="/games/spelling" element={<Spelling />} />
+            {/* Private routes */}
+            <Route element={<PrivateRoute />}>
+              <Route path="/home" element={<Home />} />
+              <Route path="/vault" element={<Vault />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/games" element={<Games />} />
+              <Route
+                path="/games/capitalization"
+                element={<Capitalization />}
+              />
+              <Route path="/games/punctuation" element={<Punctuation />} />
+              <Route path="/games/spelling" element={<Spelling />} />
 
-            <Route
-              path="/games/capitalization/level-1"
-              element={<CapLevel1 />}
-            />
-            <Route
-              path="/games/capitalization/level-2"
-              element={<CapLevel2 />}
-            />
-            <Route
-              path="/games/capitalization/level-3"
-              element={<CapLevel3 />}
-            />
+              <Route
+                path="/games/capitalization/level-1"
+                element={<CapLevel1 />}
+              />
+              <Route
+                path="/games/capitalization/level-2"
+                element={<CapLevel2 />}
+              />
+              <Route
+                path="/games/capitalization/level-3"
+                element={<CapLevel3 />}
+              />
 
-            <Route path="/games/punctuation/level-1" element={<PuncLevel1 />} />
-            <Route path="/games/punctuation/level-2" element={<PuncLevel2 />} />
-            <Route path="/games/punctuation/level-3" element={<PuncLevel3 />} />
+              <Route
+                path="/games/punctuation/level-1"
+                element={<PuncLevel1 />}
+              />
+              <Route
+                path="/games/punctuation/level-2"
+                element={<PuncLevel2 />}
+              />
+              <Route
+                path="/games/punctuation/level-3"
+                element={<PuncLevel3 />}
+              />
 
-            <Route path="/games/spelling/level-1" element={<SpellLevel1 />} />
-            <Route path="/games/spelling/level-2" element={<SpellLevel2 />} />
-            <Route path="/games/spelling/level-3" element={<SpellLevel3 />} />
+              <Route path="/games/spelling/level-1" element={<SpellLevel1 />} />
+              <Route path="/games/spelling/level-2" element={<SpellLevel2 />} />
+              <Route path="/games/spelling/level-3" element={<SpellLevel3 />} />
 
-            <Route path="/vault/capitalization" element={<CapVault />} />
-            <Route path="/vault/punctuation" element={<PuncVault />} />
-            <Route path="/vault/spelling" element={<SpellVault />} />
+              <Route path="/vault/capitalization" element={<CapVault />} />
+              <Route path="/vault/punctuation" element={<PuncVault />} />
+              <Route path="/vault/spelling" element={<SpellVault />} />
 
-            <Route path="/board/*" element={<Board />} />
-          </Route>
+              <Route path="/board/*" element={<Board />} />
+            </Route>
 
-          {/* 404 */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </SoundProvider>
+            {/* 404 */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </SoundProvider>
+      </ScreenSizeProvider>
     </Router>
   );
 };

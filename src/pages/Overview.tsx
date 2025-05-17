@@ -40,7 +40,7 @@ function Overview() {
           }}
           style={{ fontFamily: "Arco" }}
         >
-          {user ? "Go to Home" : "Skip"}
+          {user ? "Home" : "Skip"}
           <FaCaretRight />
         </motion.button>
       </motion.div>
