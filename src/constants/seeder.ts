@@ -49,8 +49,8 @@ export const capLevel1: Word[] = [
   },
   {
     text: "science",
-    shouldCapitalize: true,
-    correctWord: "Science",
+    shouldCapitalize: false,
+    correctWord: "science",
   },
   {
     text: "titanic",
@@ -295,7 +295,7 @@ export const capLevel3: Word3[] = [
   },
   {
     incorrectSentence: "i enjoy chicken adobo a lot.",
-    correctSentence: "I enjoy Chicken Adobo a lot.",
+    correctSentence: "I enjoy chicken adobo a lot.",
   },
   {
     incorrectSentence: "he works at abs-cbn.",
@@ -739,8 +739,8 @@ export const capLevel2: Word2[] = [
     prompt:
       "queen elizabeth ii, prince charles, and princess diana are part of the royal family.",
     answer:
-      "Queen Elizabeth II, Prince Charles, and Princess Diana are part of the Royal Family.",
-    correctIndexes: [0, 1, 2, 3, 4, 6, 7, 12, 13],
+      "Queen Elizabeth II, Prince Charles, and Princess Diana are part of the royal family.",
+    correctIndexes: [0, 1, 2, 3, 4, 6, 7],
   },
 ];
 
@@ -798,10 +798,10 @@ export const practiceQuestions: Question[] = [
   {
     question: "Which sentence is correctly written?",
     choices: [
-      "We should visit the library and buy some books.",
-      "we should visit the library and buy some books",
-      "We should visit the libray and buy some books.",
-      "We should visit the library and buy some Books",
+      "We should visit the library and borrow some books.",
+      "we should visit the library and borrow some books",
+      "We should visit the libray and borrow some books.",
+      "We should visit the library and borrow some Books",
     ],
     answerIndex: 0,
   },
@@ -1119,21 +1119,21 @@ export const practiceQuestions: Question[] = [
     question: "Which sentence is correctly written?",
     choices: [
       "Please take care of the dog while I’m away.",
-      "Please take care of the dog while I’m away.",
-      "Please take care of the dog while I'm away.",
-      "Please take care of the dog while I'm away.",
+      "Please take care of the dog while I’m away,",
+      "Please take care of the dog while I'm away:",
+      "Please take care of the dog while I'm away;",
     ],
     answerIndex: 0,
   },
   {
     question: "Which sentence is correctly written?",
     choices: [
+      "Her Hair is long and brown.",
       "Her hair is long and brown.",
-      "Her hair is long and brown.",
-      "Her hair is long and brown.",
-      "Her hair is long and brown.",
+      "Her hair is Long and brown.",
+      "Her hair, is long and brown.",
     ],
-    answerIndex: 0,
+    answerIndex: 1,
   },
   {
     question: "Which sentence is correctly written?",
@@ -1149,9 +1149,9 @@ export const practiceQuestions: Question[] = [
     question: "Which sentence is correctly written?",
     choices: [
       "The cat jumped off the sofa.",
-      "The cat jumped off the sofa.",
-      "The cat jumped off the sofa.",
-      "The cat jumped off the sofa.",
+      "The Cat jumped off the sofa.",
+      "The cat jumped off the Sofa.",
+      "the cat jumped off the sofa.",
     ],
     answerIndex: 0,
   },
