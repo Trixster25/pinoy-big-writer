@@ -23,6 +23,23 @@ export const downloadCertificatePDF = async (rank: number, name: string) => {
   pdf.save(`certificate_${rank}_${name.toUpperCase()}_${date}.pdf`);
 };
 
+export const downloadCompletionCertificatePDF = async (userName: string) => {
+  const date = new Date().toLocaleDateString();
+  const imageUrl = "/certificates/pbw.png";
+
+  const canvas = await generateCertificateCanvas(imageUrl, userName, date);
+  const imgData = canvas.toDataURL("image/png");
+
+  const pdf = new jsPDF({
+    orientation: "portrait",
+    unit: "px",
+    format: [canvas.width, canvas.height],
+  });
+
+  pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+  pdf.save(`completion_certificate_${userName}_${date}.pdf`);
+};
+
 export const generateCertificateCanvas = async (
   imageUrl: string,
   name: string,

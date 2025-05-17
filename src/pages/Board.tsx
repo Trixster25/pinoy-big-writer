@@ -8,7 +8,10 @@ import {
   getLocalStorageItem,
   setLocalStorageItem,
 } from "../utils/localstorage";
-import { downloadCertificatePDF } from "../utils/pdf";
+import {
+  downloadCertificatePDF,
+  downloadCompletionCertificatePDF,
+} from "../utils/pdf";
 import type { User, Achievements, AchievementCardProps } from "../types";
 import { FirestoreError } from "firebase/firestore";
 import { getUsers } from "../services/User"; // Import your Firebase functions
@@ -212,6 +215,21 @@ function Board() {
           Star board
           <FaStar className="text-[#F3B73F]" />
         </span>
+        <div className="flex-1 flex items-center justify-end">
+          {userAchievements?.includes("completedAllLevels") &&
+            tab == "Achievements" &&
+            currentUserName !== null && (
+              <button
+                className="bg-yellow-500 text-white px-8 py-4 rounded-xl  text-xl hover:scale-90 mt-4"
+                style={{ fontFamily: "Arco" }}
+                onClick={() =>
+                  downloadCompletionCertificatePDF(currentUserName)
+                }
+              >
+                Download Certificate
+              </button>
+            )}
+        </div>
       </div>
 
       {/* Content */}
