@@ -1138,12 +1138,12 @@ export const practiceQuestions: Question[] = [
   {
     question: "Which sentence is correctly written?",
     choices: [
-      "Don’t forget to lock the door.",
+      "Don’t forget to lock the Door.",
       "Dont forget to lock the door.",
-      "Don’t forget to lock the door.",
+      "Don’t forget, to lock the door.",
       "Don't forget to lock the door.",
     ],
-    answerIndex: 0,
+    answerIndex: 3,
   },
   {
     question: "Which sentence is correctly written?",

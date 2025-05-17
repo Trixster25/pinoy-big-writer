@@ -62,7 +62,7 @@ export const generateCertificateCanvas = async (
       ctx.textAlign = "center";
 
       // Adjust position based on your certificate layout
-      ctx.fillText(name.toUpperCase(), canvas.width / 2, canvas.height * 0.555);
+      ctx.fillText(name.toUpperCase(), canvas.width / 2, canvas.height * 0.525);
       ctx.font = "bold 45px 'Times New Roman', Calibri";
       ctx.fillText(
         `AWARDED ON ${date}`,
