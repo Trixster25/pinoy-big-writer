@@ -17,6 +17,7 @@ import useSound from "use-sound";
 import doorOpenSfx from "/sounds/door-open.mp3";
 import doorCloseSfx from "/sounds/door-close.mp3";
 import { useSoundContext } from "../layouts/SoundProvider";
+import { useScreenSize } from "../layouts/ScreenSizeProvider";
 
 function Games() {
   const { user, setUser } = useUserStore();
@@ -63,14 +64,24 @@ function Games() {
     }
   }, [user]);
 
+  const { isMediumScreen } = useScreenSize();
+
   return (
-    <div className="w-screen h-screen flex flex-col items-center background p-8">
+    <div
+      className={`w-screen h-screen flex flex-col items-center background ${
+        isMediumScreen ? "p-2" : "p-8"
+      }`}
+    >
       {/* Top bar */}
-      <div className="w-[90%] flex justify-end">
+      <div
+        className={`w-${isMediumScreen ? "[100%]" : "[90%]"} flex justify-end`}
+      >
         <div className="flex items-center gap-14">
           <Link to="/board/achievements">
             <motion.div
-              className="min-w-[200px] flex justify-between items-center bg-black/50 px-4 py-2 rounded-xl cursor-pointer"
+              className={`flex justify-between items-center bg-black/50 px-4 py-2 rounded-xl cursor-pointer ${
+                isMediumScreen ? "min-w-[150px]" : "min-w-[200px]"
+              }`}
               initial={{ y: -100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               whileHover={{ scale: 1.05 }}
@@ -93,16 +104,25 @@ function Games() {
       {/* Tabs */}
       <div className="w-full flex items-center justify-start">
         <span
-          className={`text-3xl bg-black/50 px-6 py-3 rounded-t-3xl text-white flex items-center gap-4 border-8 border-black/50 cursor-pointer`}
+          className={`text-${
+            isMediumScreen ? "lg px-2 py-1" : "3xl px-6 py-3"
+          } bg-black/50 rounded-t-3xl text-white flex items-center gap-4 border-8 border-black/50 cursor-pointer`}
           style={{ fontFamily: "Arco" }}
         >
           Games
-          <BsDoorOpenFill className="text-3xl text-[#F3B73F] " />
+          <BsDoorOpenFill
+            className={`text-${isMediumScreen ? "xl" : "3xl"} text-[#F3B73F]`}
+          />
         </span>
       </div>
 
       {/* Content */}
-      <div className="flex-1 w-full flex items-center justify-around gap-8 p-8 border-8 rounded-xl rounded-tl-none border-black/50 bg-black/25">
+
+      <div
+        className={`flex-1 w-full flex items-center justify-around ${
+          isMediumScreen ? "gap-2 p-2" : "gap-8 p-8"
+        } border-8 rounded-xl rounded-tl-none border-black/50 bg-black/25`}
+      >
         {cards.map((card, idx) => (
           <motion.div
             key={idx}
@@ -135,7 +155,7 @@ function Games() {
                   hovered === idx ? `${card.src}-open.png` : `${card.src}.png`
                 }
                 alt={card.alt}
-                className="w-[150px]"
+                className={`${isMediumScreen ? "w-[75px]" : "w-[150px]"}`}
                 transition={{ duration: 0.3 }}
                 whileHover={{
                   scale: 0.95,
@@ -143,7 +163,9 @@ function Games() {
                 }}
               />
               <span
-                className="text-xl text-center text-white mt-2 outlined-text-white "
+                className={`text-${
+                  isMediumScreen ? "md mt-0" : "xl mt-2"
+                } text-center text-white outlined-text-white`}
                 style={{ fontFamily: "Arco" }}
               >
                 {card.alt}
@@ -156,7 +178,9 @@ function Games() {
       {/* Home Button */}
       <Link to="/home">
         <motion.div
-          className="w-16 h-16 bg-black/50 text-white rounded-full flex items-center justify-center cursor-pointer mt-4"
+          className={`w-${isMediumScreen ? 12 : 16} h-${
+            isMediumScreen ? 12 : 16
+          } bg-black/50 text-white rounded-full flex items-center justify-center cursor-pointer mt-4`}
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           whileHover={{ scale: 0.8 }}
@@ -172,7 +196,11 @@ function Games() {
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <TiHome className="w-8 h-8" />
+            <TiHome
+              className={`w-${isMediumScreen ? 8 : 8} h-${
+                isMediumScreen ? 8 : 8
+              }`}
+            />
           </motion.div>
         </motion.div>
       </Link>

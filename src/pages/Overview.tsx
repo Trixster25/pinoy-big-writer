@@ -2,10 +2,13 @@ import { motion } from "motion/react";
 import { useNavigate } from "react-router-dom";
 import { FaCaretRight } from "react-icons/fa6";
 import { useUserStore } from "../stores/useUserStore";
+import { useScreenSize } from "../layouts/ScreenSizeProvider";
 
 function Overview() {
   const navigate = useNavigate();
   const { user } = useUserStore();
+
+  const { isMediumScreen } = useScreenSize();
 
   return (
     <div className="w-dvw h-dvh background  flex items-center justify-center overflow-hidden">
@@ -20,7 +23,14 @@ function Overview() {
         }}
       >
         <motion.button
-          className="absolute bottom-5 right-5 flex items-center gap-2 bg-red-400 px-6 py-3 text-white font-bold text-2xl rounded-xl border-6 border-black hover:scale-90 cursor-pointer"
+          className={`absolute flex items-center gap-2 bg-red-400 px-6 py-3 text-white font-bold rounded-xl border-6 border-black hover:scale-90 cursor-pointer ${
+            isMediumScreen
+              ? "text-lg bottom-0 right-1"
+              : "text-2xl bottom-5 right-5 "
+          }`}
+          style={{
+            fontFamily: "Arco",
+          }}
           initial={{ scale: 1 }}
           whileTap={{ scale: 0.9 }}
           animate={{
@@ -38,7 +48,6 @@ function Overview() {
               navigate("/login");
             }
           }}
-          style={{ fontFamily: "Arco" }}
         >
           {user ? "Home" : "Skip"}
           <FaCaretRight />
