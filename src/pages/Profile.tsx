@@ -368,7 +368,7 @@ export default function Profile() {
                   className="w-16 h-16 rounded-full border-4 border-white"
                 />
                 <span
-                  className="text-lg font-bold mt-2"
+                  className="text-sm font-bold mt-2"
                   style={{ fontFamily: "Arco" }}
                 >
                   {user?.username || "Guest"}
