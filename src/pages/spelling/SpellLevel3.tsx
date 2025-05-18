@@ -345,6 +345,9 @@ function SpellLevel3() {
             >
               Start Game
             </button>
+            <span className="text-sm text-red-400">
+              Rotate to Portrait Mode on mobile for better experience
+            </span>
           </div>
         ) : completed || gameOver ? (
           <div className="text-white text-3xl text-center">

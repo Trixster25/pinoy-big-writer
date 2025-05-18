@@ -340,7 +340,7 @@ function CapLevel3() {
               }`}
             >
               Type the sentence with correct capitalization. You have 30 seconds
-              per question. Get a minimum of 7 stars and a maximum of 10 stars
+              per question. Get a minimum of 7 stars and a maximum of 10 stars.
             </p>
             <button
               onClick={handleStartGame}
@@ -355,6 +355,9 @@ function CapLevel3() {
             >
               Start Game
             </button>
+            <span className="text-sm text-red-400">
+              Rotate to Portrait Mode on mobile for better experience
+            </span>
           </div>
         ) : gameOver ? (
           <div

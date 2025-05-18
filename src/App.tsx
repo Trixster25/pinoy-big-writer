@@ -50,7 +50,7 @@ const App = () => {
     };
   }, []);
 
-  if (isSmallScreen) {
+  if (isSmallScreen && !window.location.pathname.endsWith("3")) {
     return <RotateScreen />;
   }
 
