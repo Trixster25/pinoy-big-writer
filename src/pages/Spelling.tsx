@@ -9,12 +9,15 @@ import {
 } from "../utils/localstorage";
 import type { User, LevelProgress } from "../types";
 import { BsDoorOpenFill } from "react-icons/bs";
+import { useScreenSize } from "../layouts/ScreenSizeProvider";
+import { AiOutlineFontColors } from "react-icons/ai"; // Import a spelling-related icon
 
 const levelsName = ["Beginner", "Intermediate", "Advance"];
 
 function Spelling() {
   const { user, setUser } = useUserStore();
   const [levels, setLevels] = useState<LevelProgress | null>(null);
+  const { isMediumScreen } = useScreenSize(); // Get screen size
 
   useEffect(() => {
     if (!user) {
@@ -32,33 +35,44 @@ function Spelling() {
     if (!levels) return null;
 
     const unlocked = index === 0 || levels[index - 1];
+    const iconSize = isMediumScreen ? "text-6xl" : "text-9xl"; // Responsive icon size
+
     if (!unlocked) {
       return (
         <motion.div
           key={index}
-          className="text-8xl"
           whileHover={{ x: [0, -3, 3, -3, 3, 0] }}
           transition={{ duration: 0.6 }}
         >
-          <FaLock className="text-9xl text-gray-600" />
+          <FaLock className={`${iconSize} text-gray-600`} />
         </motion.div>
       );
     }
     return completed ? (
-      <FaStar key={index} className="text-9xl text-green-400" />
+      <FaStar key={index} className={`${iconSize} text-green-400`} />
     ) : (
-      <FaRegStar key={index} className="text-9xl text-green-400" />
+      <FaRegStar key={index} className={`${iconSize} text-green-400`} />
     );
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center spelling p-8">
+    <div
+      className={`w-dvw h-dvh flex flex-col items-center spelling ${
+        isMediumScreen ? "p-2" : "p-8" // Responsive padding
+      }`}
+    >
       {/* Top bar */}
-      <div className="w-[90%] flex justify-end">
+      <div
+        className={`${
+          isMediumScreen ? "w-[100%]" : "w-[90%]" // Responsive width
+        } flex justify-end`}
+      >
         <div className="flex items-center gap-14">
           <Link to="/board/achievements">
             <motion.div
-              className="min-w-[200px] flex justify-between items-center bg-black/50 px-4 py-2 rounded-xl cursor-pointer"
+              className={`flex justify-between items-center bg-black/50 px-4 py-2 rounded-xl cursor-pointer ${
+                isMediumScreen ? "min-w-[150px]" : "min-w-[200px]" // Responsive width
+              }`}
               initial={{ y: -100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               whileHover={{ scale: 1.05 }}
@@ -81,18 +95,30 @@ function Spelling() {
       {/* Tabs */}
       <div className="w-full flex items-center justify-start">
         <span
-          className={`text-3xl bg-black/50 px-6 py-3 rounded-t-3xl text-white flex items-center gap-4 border-8 border-black/50 cursor-pointer`}
+          className={`text-${
+            isMediumScreen ? "lg px-2 py-1" : "3xl px-6 py-3" // Responsive text and padding
+          } bg-black/50 rounded-t-3xl text-white flex items-center gap-4 border-8 border-black/50 cursor-pointer`}
           style={{ fontFamily: "Arco" }}
         >
           Spelling Station
-          <span className="text-2xl w-fit h-fit text-white bg-green-400 rounded-full p-2 flex items-center justify-center">
-            A_
+          <span
+            className={`text-${
+              isMediumScreen ? "lg" : "4xl"
+            } w-fit h-fit text-white bg-green-400 rounded-full p-2 flex items-center justify-center`}
+          >
+            <AiOutlineFontColors /> {/* Using a spelling-related icon */}
           </span>
         </span>
       </div>
 
       {/* Content */}
-      <div className="flex-1 w-full flex items-center justify-around gap-8 p-8 border-8 rounded-xl rounded-tl-none border-black/50 bg-[#E6FECB]/25">
+      <div
+        className={`flex-1 w-full flex items-center justify-around gap-${
+          isMediumScreen ? "2" : "8" // Responsive gap
+        } p-${
+          isMediumScreen ? "2" : "8" // Responsive padding
+        } border-8 rounded-xl rounded-tl-none border-black/50 bg-[#E6FECB]/25`}
+      >
         {levels?.map((completed, idx) => {
           const unlocked = idx === 0 || levels[idx - 1];
 
@@ -100,13 +126,15 @@ function Spelling() {
           const levelContent = (
             <motion.div
               key={idx}
-              className="min-w-32 flex flex-col items-center p-4 cursor-pointer gap-4 "
+              className={`min-w-32 flex flex-col items-center p-4 cursor-pointer gap-4 `}
               whileHover={unlocked ? { scale: 1.2 } : {}}
             >
               {renderLevelIcon(completed, idx)}
               {unlocked && (
                 <span
-                  className="text-center text-3xl text-black/75 font-semibold break-words"
+                  className={`text-center ${
+                    isMediumScreen ? "text-xl" : "text-3xl" // Responsive text
+                  } text-black/75 font-semibold break-words`}
                   style={{ fontFamily: "Arco" }}
                 >
                   {levelsName[idx]}
@@ -128,7 +156,9 @@ function Spelling() {
       {/* Home Button */}
       <Link to="/games">
         <motion.div
-          className="w-16 h-16 bg-black/50 text-white rounded-full flex items-center justify-center cursor-pointer mt-4"
+          className={`w-${isMediumScreen ? 12 : 16} h-${
+            isMediumScreen ? 12 : 16 // Responsive size
+          } bg-black/50 text-white rounded-full flex items-center justify-center cursor-pointer mt-4`}
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           whileHover={{ scale: 0.8 }}
