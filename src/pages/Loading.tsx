@@ -38,7 +38,7 @@ function Loading() {
       <motion.img
         src="house.png"
         alt="Loading house"
-        className="w-[20%] h-auto"
+        className="w-[20%] h-auto z-10"
         initial={{ scale: 1, x: 0, y: 0 }}
         animate={
           startZoom
@@ -63,6 +63,34 @@ function Loading() {
               }
         }
       />
+      <motion.span
+        className="text-3xl font-medium text-white mt-2"
+        style={{ fontFamily: "Arco" }}
+        initial={{ scale: 1, x: 0, y: 0 }}
+        animate={
+          startZoom
+            ? {
+                x: 0,
+                y: 0,
+                opacity: 0,
+                transition: {
+                  duration: 1,
+                  ease: "easeInOut",
+                },
+              }
+            : {
+                scale: [1, 1.05, 1],
+                transition: {
+                  repeat: Infinity,
+                  repeatType: "mirror",
+                  duration: 2,
+                  ease: "easeInOut",
+                },
+              }
+        }
+      >
+        Mechanics Edition
+      </motion.span>
     </div>
   );
 }

@@ -49,7 +49,7 @@ function Games() {
     {
       path: "/games/punctuation",
       src: "/doors/door2",
-      alt: "Punctuation Palace",
+      alt: "Punctuation Zone",
     },
     { path: "/games/spelling", src: "/doors/door3", alt: "Spelling Station" },
   ];
