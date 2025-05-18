@@ -104,10 +104,14 @@ export default function Home() {
             {user?.username}
           </span>
         </motion.div>
-        <div className="flex items-center gap-14">
+        <div className={`flex items-center gap-${isMediumScreen ? "2" : "14"}`}>
           <Link to="/board/ranking">
             <motion.div
-              className="min-w-[200px] flex justify-between items-center relative bg-black/50 px-4 py-4 rounded-xl cursor-pointer"
+              className={`min-w-[${
+                isMediumScreen ? "150px" : "200px"
+              }] flex justify-between items-center relative bg-black/50 px-${
+                isMediumScreen ? "2" : "4"
+              } py-${isMediumScreen ? "2" : "4"} rounded-xl cursor-pointer`}
               initial={{ y: -100 }}
               animate={{ y: 0 }}
               whileHover={{ scale: 1.05 }}
@@ -125,7 +129,11 @@ export default function Home() {
           </Link>
           <Link to="/board/achievements">
             <motion.div
-              className="min-w-[200px] flex justify-between items-center relative bg-black/50 px-4 py-4 rounded-xl cursor-pointer"
+              className={`min-w-[${
+                isMediumScreen ? "150px" : "200px"
+              }] flex justify-between items-center relative bg-black/50 px-${
+                isMediumScreen ? "2" : "4"
+              } py-${isMediumScreen ? "2" : "4"} rounded-xl cursor-pointer`}
               initial={{ y: -100 }}
               animate={{ y: 0 }}
               whileHover={{ scale: 1.05 }}
