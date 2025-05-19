@@ -47,6 +47,7 @@ export type Question = {
   question: string;
   choices: string[];
   answerIndex: number;
+  reason: string;
 };
 
 export interface Word2 {

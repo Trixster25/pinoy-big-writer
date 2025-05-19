@@ -8,7 +8,6 @@ import { useUserStore } from "../../stores/useUserStore";
 import { markLevelComplete } from "../../utils/game";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
-import { FaCaretLeft } from "react-icons/fa6";
 import { MdTimer } from "react-icons/md";
 import useSound from "use-sound";
 import { useSoundContext } from "../../layouts/SoundProvider";
@@ -18,6 +17,7 @@ import {
 } from "../../utils/speech";
 import { HiSpeakerWave } from "react-icons/hi2";
 import { useScreenSize } from "../../layouts/ScreenSizeProvider"; // Import useScreenSize
+import { TiHome } from "react-icons/ti";
 
 const correctSoundPath = "/sounds/correct.mp3";
 const wrongSoundPath = "/sounds/wrong.mp3";
@@ -460,7 +460,7 @@ function SpellLevel3() {
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <FaCaretLeft className="w-8 h-8" />
+            <TiHome className="w-8 h-8" />
           </motion.div>
         </motion.div>
       </Link>

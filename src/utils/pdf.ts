@@ -63,12 +63,20 @@ export const generateCertificateCanvas = async (
 
       // Adjust position based on your certificate layout
       ctx.fillText(name.toUpperCase(), canvas.width / 2, canvas.height * 0.525);
-      ctx.font = "bold 45px 'Times New Roman', Calibri";
-      ctx.fillText(
-        `AWARDED ON ${date}`,
-        canvas.width / 2,
-        canvas.height * 0.875
-      );
+      ctx.font = "44px 'Arial', sans-serif";
+
+      console.log(date);
+
+      const dateStr = date; // your input string
+      const dateObj = new Date(dateStr);
+
+      const formattedDate = dateObj.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+
+      ctx.fillText(formattedDate, canvas.width / 2 - 370, canvas.height * 0.81);
 
       resolve(canvas);
     };

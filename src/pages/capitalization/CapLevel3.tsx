@@ -4,7 +4,6 @@ import { capLevel3 as allWords } from "../../constants/seeder";
 import type { Word3 } from "../../types";
 import { shuffleArray } from "../../utils/array";
 import { Link } from "react-router-dom";
-import { FaCaretLeft } from "react-icons/fa6";
 import { useUserStore } from "../../stores/useUserStore";
 import { markLevelComplete } from "../../utils/game";
 import Confetti from "react-confetti";
@@ -13,6 +12,7 @@ import { MdTimer } from "react-icons/md";
 import useSound from "use-sound";
 import { useSoundContext } from "../../layouts/SoundProvider";
 import { useScreenSize } from "../../layouts/ScreenSizeProvider"; // Import the hook
+import { TiHome } from "react-icons/ti";
 
 const correctSoundPath = "/sounds/correct.mp3";
 const wrongSoundPath = "/sounds/wrong.mp3";
@@ -339,8 +339,9 @@ function CapLevel3() {
                 isMediumScreen ? "xl" : "3xl"
               }`}
             >
-              Type the sentence with correct capitalization. You have 30 seconds
-              per question. Get a minimum of 7 stars and a maximum of 10 stars.
+              Type the sentence with correct capitalization and copy the
+              punctuation. You have 30 seconds per question. Get a minimum of 7
+              stars and a maximum of 10 stars.
             </p>
             <button
               onClick={handleStartGame}
@@ -496,7 +497,7 @@ function CapLevel3() {
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <FaCaretLeft className="w-8 h-8" />
+            <TiHome className="w-8 h-8" />
           </motion.div>
         </motion.div>
       </Link>

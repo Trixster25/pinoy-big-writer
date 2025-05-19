@@ -754,6 +754,8 @@ export const practiceQuestions: Question[] = [
       "how are you doing today!",
     ],
     answerIndex: 1,
+    reason:
+      "B is correct because it starts with a capital letter and ends with a question mark.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -764,6 +766,8 @@ export const practiceQuestions: Question[] = [
       "I love chocolate cake do you",
     ],
     answerIndex: 0,
+    reason:
+      "A is correct because both sentences start with capital letters and use proper punctuation.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -774,16 +778,20 @@ export const practiceQuestions: Question[] = [
       "It was a beautiful day Yesterday",
     ],
     answerIndex: 1,
+    reason:
+      'B is correct because it uses correct spelling ("beautiful"), capitalization, and ends with a period.',
   },
   {
     question: "Which sentence is correctly written?",
     choices: [
-      "Shes going to the park to play with her freinds.",
-      "She is going to the park to play with her friends",
+      "She’s going to the park to play with her freinds.",
+      "She is going to the park to play with her Friends",
       "She’s going to the park to play with her friends.",
-      "shes going to the park to play with her friends",
+      "she’s going to the park to play with her friends",
     ],
     answerIndex: 2,
+    reason:
+      'C is correct because it uses correct contraction, spelling ("friends"), and capitalization.',
   },
   {
     question: "Which sentence is correctly written?",
@@ -794,6 +802,8 @@ export const practiceQuestions: Question[] = [
       "Wow! That was amazing.",
     ],
     answerIndex: 3,
+    reason:
+      "D is correct because it uses proper capitalization and ends with an exclamation mark for emotion.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -804,6 +814,8 @@ export const practiceQuestions: Question[] = [
       "We should visit the library and borrow some Books",
     ],
     answerIndex: 0,
+    reason:
+      'A is correct because it uses correct spelling ("library"), capitalization, and ends with a period.',
   },
   {
     question: "Which sentence is correctly written?",
@@ -814,6 +826,8 @@ export const practiceQuestions: Question[] = [
       "let’s go for a walk tomorrow morning",
     ],
     answerIndex: 1,
+    reason:
+      'B is correct because it uses the correct contraction ("Let’s"), proper capitalization, and punctuation.',
   },
   {
     question: "Which sentence is correctly written?",
@@ -824,6 +838,8 @@ export const practiceQuestions: Question[] = [
       "The concert is next Saturday do you want to go?",
     ],
     answerIndex: 2,
+    reason:
+      "C is correct because it splits the two ideas into proper sentences with correct punctuation and capitalization.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -834,6 +850,8 @@ export const practiceQuestions: Question[] = [
       "My brother’s name is michael",
     ],
     answerIndex: 1,
+    reason:
+      'B is correct because it shows possession with "brother’s" and capitalizes the name "Michael."',
   },
   {
     question: "Which sentence is correctly written?",
@@ -844,6 +862,8 @@ export const practiceQuestions: Question[] = [
       "Please hand me the pen it’s on the table.",
     ],
     answerIndex: 2,
+    reason:
+      "C is correct because it uses a semicolon to join two related complete sentences and correct contractions.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -854,6 +874,8 @@ export const practiceQuestions: Question[] = [
       "I want to buy new backpack from the store",
     ],
     answerIndex: 1,
+    reason:
+      "B is correct because it uses proper capitalization and spelling throughout the sentence.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -864,6 +886,8 @@ export const practiceQuestions: Question[] = [
       "The professor gave an interesting Lecture on physics",
     ],
     answerIndex: 2,
+    reason:
+      'C is correct because it capitalizes only the first word and treats common nouns like "professor" and "physics" correctly.',
   },
   {
     question: "Which sentence is correctly written?",
@@ -874,6 +898,8 @@ export const practiceQuestions: Question[] = [
       "She said “I will come after lunch”",
     ],
     answerIndex: 2,
+    reason:
+      "C is correct because it uses proper capitalization, punctuation, and quotation marks for direct speech.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -884,6 +910,8 @@ export const practiceQuestions: Question[] = [
       "We went to the beach it was hot and sunny",
     ],
     answerIndex: 2,
+    reason:
+      "C is correct because it joins two related independent clauses correctly with a semicolon.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -894,6 +922,8 @@ export const practiceQuestions: Question[] = [
       "He loves reading books about History and Sci-fi",
     ],
     answerIndex: 1,
+    reason:
+      'B is correct because it uses the correct spelling of "sci-fi" with a hyphen and proper capitalization.',
   },
   {
     question: "Which sentence is correctly written?",
@@ -904,6 +934,8 @@ export const practiceQuestions: Question[] = [
       "I visited the Museum last weekend",
     ],
     answerIndex: 2,
+    reason:
+      'C is correct because it capitalizes the first word and spells "museum" correctly.',
   },
   {
     question: "Which sentence is correctly written?",
@@ -914,16 +946,20 @@ export const practiceQuestions: Question[] = [
       "She gave me a pretty bracelet as a Gift",
     ],
     answerIndex: 0,
+    reason:
+      'A is correct because it uses proper capitalization and avoids capitalizing the common noun "bracelet."',
   },
   {
     question: "Which sentence is correctly written?",
     choices: [
       "Please dont forget your homework tomorrow.",
-      "Please don't forget your homework tomorrow.",
+      "Please Don't forget your homework tomorrow.",
       "please don’t forget your homework tomorrow.",
       "Please don’t forget your homework tomorrow.",
     ],
     answerIndex: 3,
+    reason:
+      "D is correct because it uses the correct contraction “don’t” and capitalizes the first word.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -934,6 +970,8 @@ export const practiceQuestions: Question[] = [
       "the movie was fantastic! We should watch it again.",
     ],
     answerIndex: 2,
+    reason:
+      "C is correct because it uses an exclamation mark to show strong feeling and proper capitalization.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -944,6 +982,8 @@ export const practiceQuestions: Question[] = [
       "I need to buy some shoes and a Coat.",
     ],
     answerIndex: 0,
+    reason:
+      'A is correct because it uses correct capitalization and avoids unnecessary comma before "and."',
   },
   {
     question: "Which sentence is correctly written?",
@@ -954,6 +994,8 @@ export const practiceQuestions: Question[] = [
       "Have you seen my book, it’s missing?",
     ],
     answerIndex: 1,
+    reason:
+      "B is correct because it uses a question mark and a contraction, with proper capitalization.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -964,6 +1006,8 @@ export const practiceQuestions: Question[] = [
       "My favorite Color is blue.",
     ],
     answerIndex: 1,
+    reason:
+      'B is correct because it spells "favorite" correctly and capitalizes the first word.',
   },
   {
     question: "Which sentence is correctly written?",
@@ -974,6 +1018,8 @@ export const practiceQuestions: Question[] = [
       "My parents are going to paris for the Holidays.",
     ],
     answerIndex: 2,
+    reason:
+      'C is correct because it capitalizes "Paris" as a proper noun and begins the sentence correctly.',
   },
   {
     question: "Which sentence is correctly written?",
@@ -984,6 +1030,8 @@ export const practiceQuestions: Question[] = [
       "She loves to read Novels about adventures.",
     ],
     answerIndex: 0,
+    reason:
+      "A is correct because it uses proper capitalization and does not capitalize common nouns unnecessarily.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -994,6 +1042,8 @@ export const practiceQuestions: Question[] = [
       "You should take an umbrella; it’s raining outside.",
     ],
     answerIndex: 3,
+    reason:
+      "D is correct because it uses a semicolon to connect two related independent clauses correctly.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -1004,6 +1054,8 @@ export const practiceQuestions: Question[] = [
       "I got a letter from my friend Last week.",
     ],
     answerIndex: 0,
+    reason:
+      "A is correct because it uses proper capitalization and does not capitalize common nouns unnecessarily.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -1014,6 +1066,8 @@ export const practiceQuestions: Question[] = [
       "She play the violin beautifully.",
     ],
     answerIndex: 0,
+    reason:
+      "A is correct because it uses proper capitalization and punctuation throughout.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -1024,6 +1078,8 @@ export const practiceQuestions: Question[] = [
       "The Class starts at 9 a.m. tomorrow.",
     ],
     answerIndex: 2,
+    reason:
+      "C is correct because it uses proper formatting of “a.m.” and uses correct capitalization.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -1034,6 +1090,8 @@ export const practiceQuestions: Question[] = [
       "we will have a big party for his birthday.",
     ],
     answerIndex: 1,
+    reason:
+      "B is correct because it uses lowercase for the common noun “party” and correct capitalization at the start.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -1044,6 +1102,8 @@ export const practiceQuestions: Question[] = [
       "There is a new restaurant Near my house.",
     ],
     answerIndex: 0,
+    reason:
+      "A is correct because it spells “restaurant” correctly and starts with a capital letter.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -1054,6 +1114,8 @@ export const practiceQuestions: Question[] = [
       "They went on a Vacation to New York City.",
     ],
     answerIndex: 1,
+    reason:
+      "B is correct because it capitalizes the proper noun “New York City” and starts the sentence correctly.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -1064,6 +1126,8 @@ export const practiceQuestions: Question[] = [
       "The Train leaves at 5 o’clock.",
     ],
     answerIndex: 1,
+    reason:
+      "B is correct because it uses the correct punctuation mark (apostrophe) in “o’clock” and capitalizes the first word.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -1074,16 +1138,20 @@ export const practiceQuestions: Question[] = [
       "He asked if we were Ready for the race.",
     ],
     answerIndex: 0,
+    reason:
+      "A is correct because it uses proper capitalization throughout and avoids unnecessary capitalization of “race.”",
   },
   {
     question: "Which sentence is correctly written?",
     choices: [
-      "His favorite subject is Maths.",
-      "His favorite subject is Math.",
-      "His favorite Subject is math.",
-      "His Favorite subject is math.",
+      "His Favorite subject is Math 101.",
+      "His favorite subject is Math 101.",
+      "His favorite Subject is math 101.",
+      "His Favorite subject is math 101.",
     ],
     answerIndex: 1,
+    reason:
+      "B is correct because it uses correct capitalization and spells all words properly, including “Math 101.”",
   },
   {
     question: "Which sentence is correctly written?",
@@ -1094,6 +1162,8 @@ export const practiceQuestions: Question[] = [
       "We should study for the test.",
     ],
     answerIndex: 3,
+    reason:
+      "D is correct because it starts with a capital letter and avoids capitalizing the common noun “test.”",
   },
   {
     question: "Which sentence is correctly written?",
@@ -1104,16 +1174,8 @@ export const practiceQuestions: Question[] = [
       "the house was decorated with beautiful flowers.",
     ],
     answerIndex: 0,
-  },
-  {
-    question: "Which sentence is correctly written?",
-    choices: [
-      "I want to eat Pizza and pasta for dinner.",
-      "I want to eat pizza and Pasta for dinner.",
-      "I want to eat pizza and pasta for Dinner.",
-      "I want to eat pizza and pasta for dinner.",
-    ],
-    answerIndex: 3,
+    reason:
+      "A is correct because it uses proper spelling, capitalization, and punctuation.",
   },
   {
     question: "Which sentence is correctly written?",
@@ -1124,46 +1186,8 @@ export const practiceQuestions: Question[] = [
       "Please take care of the dog while I'm away;",
     ],
     answerIndex: 0,
-  },
-  {
-    question: "Which sentence is correctly written?",
-    choices: [
-      "Her Hair is long and brown.",
-      "Her hair is long and brown.",
-      "Her hair is Long and brown.",
-      "Her hair, is long and brown.",
-    ],
-    answerIndex: 1,
-  },
-  {
-    question: "Which sentence is correctly written?",
-    choices: [
-      "Don’t forget to lock the Door.",
-      "Dont forget to lock the door.",
-      "Don’t forget, to lock the door.",
-      "Don't forget to lock the door.",
-    ],
-    answerIndex: 3,
-  },
-  {
-    question: "Which sentence is correctly written?",
-    choices: [
-      "The cat jumped off the sofa.",
-      "The Cat jumped off the sofa.",
-      "The cat jumped off the Sofa.",
-      "the cat jumped off the sofa.",
-    ],
-    answerIndex: 0,
-  },
-  {
-    question: "Which sentence is correctly written?",
-    choices: [
-      "I love the beach, its so relaxing.",
-      "I love the beach, it’s so relaxing.",
-      "I love the beach; it’s so relaxing.",
-      "I love the beach, it’s so relaxing.",
-    ],
-    answerIndex: 2,
+    reason:
+      "A is correct because it uses correct punctuation with a period and proper capitalization.",
   },
 ];
 

@@ -4,7 +4,6 @@ import { capLevel2 as allWords } from "../../constants/seeder";
 import type { Word2 } from "../../types";
 import { shuffleArray } from "../../utils/array";
 import { Link, useNavigate } from "react-router-dom";
-import { FaCaretLeft } from "react-icons/fa6";
 import { useUserStore } from "../../stores/useUserStore";
 import { markLevelComplete } from "../../utils/game";
 import Confetti from "react-confetti";
@@ -13,6 +12,7 @@ import { MdTimer } from "react-icons/md";
 import useSound from "use-sound";
 import { useSoundContext } from "../../layouts/SoundProvider";
 import { useScreenSize } from "../../layouts/ScreenSizeProvider"; // Import the hook
+import { TiHome } from "react-icons/ti";
 
 const correctSoundPath = "/sounds/correct.mp3";
 const wrongSoundPath = "/sounds/wrong.mp3";
@@ -471,7 +471,7 @@ function CapLevel2() {
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <FaCaretLeft className="w-8 h-8" />
+            <TiHome className="w-8 h-8" />
           </motion.div>
         </motion.div>
       </Link>

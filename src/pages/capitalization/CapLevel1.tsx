@@ -8,12 +8,12 @@ import { useUserStore } from "../../stores/useUserStore";
 import { markLevelComplete } from "../../utils/game";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
-import { FaCaretLeft } from "react-icons/fa6";
 import { MdTimer } from "react-icons/md";
 import useSound from "use-sound";
 import { useSoundContext } from "../../layouts/SoundProvider";
 import { useNavigate } from "react-router-dom";
 import { useScreenSize } from "../../layouts/ScreenSizeProvider";
+import { TiHome } from "react-icons/ti";
 
 const correctSoundPath = "/sounds/correct.mp3";
 const wrongSoundPath = "/sounds/wrong.mp3";
@@ -482,7 +482,11 @@ function CapLevel1() {
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <FaCaretLeft className="w-8 h-8" />
+            <TiHome
+              className={`w-${isMediumScreen ? 8 : 8} h-${
+                isMediumScreen ? 8 : 8
+              }`}
+            />
           </motion.div>
         </motion.div>
       </Link>
