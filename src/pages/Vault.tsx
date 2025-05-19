@@ -96,7 +96,7 @@ function Vault() {
       } else {
         setShowResults(true);
       }
-    }, 500);
+    }, 1000);
   };
 
   // Start the review process
