@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { TiHome } from "react-icons/ti";
 import { useScreenSize } from "../layouts/ScreenSizeProvider";
+import { FaBookOpenReader } from "react-icons/fa6";
 
 function Terms() {
   const { isMediumScreen } = useScreenSize();
@@ -14,12 +15,15 @@ function Terms() {
     >
       <div className="w-full flex items-center justify-start">
         <span
-          className={`bg-black/50 rounded-t-3xl border-8 border-black/50 ${
+          className={`bg-black/50 flex items-center gap-4 rounded-t-3xl border-8 border-black/50 ${
             isMediumScreen ? "text-lg px-2 py-1" : "text-3xl px-6 py-3"
           }`}
           style={{ fontFamily: "Arco" }}
         >
           Terms and Conditions
+          <FaBookOpenReader
+            className={`text-${isMediumScreen ? "xl" : "3xl"} text-[#F3B73F]`}
+          />
         </span>
       </div>
 
@@ -54,8 +58,9 @@ function Terms() {
           Privacy
         </h3>
         <p>
-          Your data is kept private and is only used for logging into the app.
-          We do not share or sell your information.
+          Your data is kept private and is only used for logging into the app,
+          ranking users, user profiles, and achievements. We do not share or
+          sell your information.
         </p>
       </div>
 
