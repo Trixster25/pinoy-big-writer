@@ -58,6 +58,10 @@ function Login() {
       if (isExistingUser) {
         // Login existing user
         const existingUser = await getUser(username);
+        if (existingUser.isLoggedIn) {
+          setErrorMessage("Account are already logged in.");
+          return;
+        }
         if (existingUser && password) {
           const isPasswordCorrect = await bcrypt.compare(
             password,
