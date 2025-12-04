@@ -1,6 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import Logger from "./src/utils/log";
 
+const context = "Firebase Config";
 const isProd = String(import.meta.env.VITE_PROD_MODE).toLowerCase() === "true";
 
 const prodConfig = {
@@ -22,7 +24,7 @@ const devConfig = {
 };
 
 if(!isProd) {
-  console.log("LOG :: Dev mode enabled");
+  Logger.log(context, "Firebase is connected to dev environment");
 }
 
 const firebaseConfig = ((isProd)? prodConfig : devConfig);
