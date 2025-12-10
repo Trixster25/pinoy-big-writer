@@ -215,7 +215,7 @@ export default function Home() {
               </div>
             </motion.div>
           </Link>
-          <Link to="/games">
+          <Link to="/task-room-entrance">
             <motion.div
               className="flex flex-col min-h-[180px] min-w-[350px] bg-[#903145] rounded-xl border-6 border-black cursor-pointer"
               initial={{ y: -100 }}
@@ -287,7 +287,7 @@ export default function Home() {
               </div>
             </motion.div>
           </Link>
-          <Link to="/games">
+          <Link to="/task-room-entrance">
             <motion.div
               className="flex flex-col min-h-[60px] min-w-[250px] bg-[#903145] rounded-xl border-6 border-black cursor-pointer"
               initial={{ y: -100 }}

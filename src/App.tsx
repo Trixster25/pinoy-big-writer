@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 import Vault from "./pages/Vault";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
-import Games from "./pages/Games";
+import TaskRoomEntrance from "./pages/TaskRoomEntrance";
 import NotFound from "./pages/NotFound";
 import PrivateRoute from "./pages/PrivateRoute";
 import Capitalization from "./pages/Capitalization";
@@ -39,6 +39,7 @@ import Terms from "./pages/Terms";
 import { useUserStore } from "./stores/useUserStore";
 import LevelGuard from "./layouts/LevelGuard";
 import Rules from "./pages/Rules";
+import TaskRoom from "./pages/TaskRoom";
 
 const App = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
@@ -75,7 +76,8 @@ const App = () => {
               <Route path="/vault" element={<Vault />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/games" element={<Games />} />
+              <Route path="/task-room-entrance" element={<TaskRoomEntrance />} />
+              <Route path="/task-room" element={<TaskRoom/>} />
               <Route
                 path="/games/capitalization"
                 element={<Capitalization />}
