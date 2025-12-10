@@ -1,0 +1,86 @@
+import { Link } from "react-router-dom";
+import { useScreenSize } from "../layouts/ScreenSizeProvider";
+import { motion } from "framer-motion";
+import { TiHome } from "react-icons/ti";
+
+
+function TaskRoom() {
+
+  const selections = [
+    "Content",
+    "Organization",
+    "Vocabulary",
+    "Grammar",
+    "Mechanics",
+  ]
+
+  const { isMediumScreen } = useScreenSize();
+  
+  return (
+
+    <div className={`w-dvw h-dvh flex flex-col justify-center items-center task-room ${
+        isMediumScreen ? "p-2" : "p-8"
+      }`}>
+
+        <h1 className="text-[#2f2014]" style={{fontFamily: "Arco", fontSize: isMediumScreen? "20px" : "35px"}}><b>Complete the Challenges</b></h1>
+
+        <div className={`flex justify-evenly items-center flex-wrap
+            ${isMediumScreen ? "w-[70dvw] h-[60dvh] mb-30" : "w-[50dvw] h-[50dvh] mb-[200px]"}`}
+          >
+          {selections.map((selection, id) => (
+            <Link to="" key={id}
+              className={`${isMediumScreen? "w-[35%]" : "w-[45%]"}`}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 1,
+                    delay: id * 0.2,
+                    type: "spring",
+                  }}
+                  whileHover={{ scale: "1.1" }}
+                  style={{ backgroundColor: "rgb(97 73 53)" }}
+                  className={`border-3 border-[#e6bb89] text-center rounded-3xl ${isMediumScreen? "p-3" : "p-5"}`}>
+                    <p style={{fontFamily: "Arco"}} className="text-[#ffffff]">
+                      {selection}
+                    </p>
+                </motion.div>
+            </Link>
+          ))}
+        </div>
+
+          <Link to="/home" className="absolute bottom-10">
+            <motion.div
+              className={`w-${isMediumScreen ? 12 : 16} h-${
+                isMediumScreen ? 12 : 16
+              } bg-black/50 text-[#fdf9ef] rounded-full flex items-center justify-center cursor-pointer mt-4`}
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              whileHover={{ scale: 0.8 }}
+              transition={{
+                type: "spring",
+                stiffness: 100,
+                damping: 10,
+                duration: 0.5,
+              }}
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <TiHome
+                  className={`w-${isMediumScreen ? 8 : 8} h-${
+                    isMediumScreen ? 8 : 8
+                  }`}
+                />
+              </motion.div>
+            </motion.div>
+          </Link>
+
+    </div>
+  );
+}
+
+export default TaskRoom;

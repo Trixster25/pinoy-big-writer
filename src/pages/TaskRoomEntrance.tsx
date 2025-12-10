@@ -9,7 +9,6 @@ import {
   setLocalStorageItem,
 } from "../utils/localstorage";
 import type { User } from "../types";
-import { BsDoorOpenFill } from "react-icons/bs";
 import { useState } from "react";
 import useSound from "use-sound";
 
@@ -19,9 +18,9 @@ import doorCloseSfx from "/sounds/door-close.mp3";
 import { useSoundContext } from "../layouts/SoundProvider";
 import { useScreenSize } from "../layouts/ScreenSizeProvider";
 
-function Games() {
+function TaskRoomEntrance() {
   const { user, setUser } = useUserStore();
-  const [hovered, setHovered] = useState<number | null>(null);
+  const [hovered, setHovered] = useState<boolean>(false);
   const { clickEnabled } = useSoundContext();
   const [volume, setVolume] = useState<number>(0.5);
 
@@ -40,19 +39,12 @@ function Games() {
     }
   }, [clickEnabled]);
 
-  const cards = [
-    {
-      path: "/games/capitalization",
-      src: "/doors/door1",
-      alt: "Capitalization Corner",
-    },
-    {
-      path: "/games/punctuation",
-      src: "/doors/door2",
-      alt: "Punctuation Zone",
-    },
-    { path: "/games/spelling", src: "/doors/door3", alt: "Spelling Station" },
-  ];
+  const taskRoom = {
+      path: "/task-room",
+      src: "/taskroom/task-room",
+      alt: "Task Room",
+    }
+  ;
 
   useEffect(() => {
     if (!user) {
@@ -68,7 +60,7 @@ function Games() {
 
   return (
     <div
-      className={`w-dvw h-dvh flex flex-col items-center background ${
+      className={`w-[100dvw] h-[100dvh] flex flex-col items-center task-room-entrance ${
         isMediumScreen ? "p-2" : "p-8"
       }`}
     >
@@ -103,111 +95,77 @@ function Games() {
         </div>
       </div>
 
-      {/* Tabs */}
-      <div className="w-full flex items-center justify-start">
-        <span
-          className={`text-${
-            isMediumScreen ? "lg px-2 py-1" : "3xl px-6 py-3"
-          } bg-black/50 rounded-t-3xl text-white flex items-center gap-4 border-8 border-black/50 cursor-pointer`}
-          style={{ fontFamily: "Arco" }}
-        >
-          Games
-          <BsDoorOpenFill
-            className={`text-${isMediumScreen ? "xl" : "3xl"} text-[#F3B73F]`}
-          />
-        </span>
-      </div>
-
-      {/* Content */}
-
       <div
-        className={`flex-1 w-full flex items-center justify-around ${
+        className={`flex-1 w-full flex items-center justify-around mb-25 ${
           isMediumScreen ? "gap-2 p-2" : "gap-8 p-8"
-        } border-8 rounded-xl rounded-tl-none border-black/50 bg-black/25`}
+        }`}
       >
-        {cards.map((card, idx) => (
-          <motion.div
-            key={idx}
+        <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
-              delay: 0.6 + idx * 0.2,
               duration: 0.5,
               type: "spring",
             }}
-            whileHover={{ scale: 1.05 }}
             className="w-full flex flex-col items-center"
           >
             <Link
-              to={card.path}
-              className="w-full flex flex-col items-center justify-center"
-            >
+              to={taskRoom.path}
+              >
               <motion.img
                 // 3a. onMouseEnter: mark hovered, play open SFX
                 onMouseEnter={() => {
-                  setHovered(idx);
+                  setHovered(true);
                   playOpen();
                 }}
                 // 3b. onMouseLeave: clear hover, play close SFX
                 onMouseLeave={() => {
-                  setHovered(null);
+                  setHovered(false);
                   playClose();
                 }}
                 src={
-                  hovered === idx ? `${card.src}-open.png` : `${card.src}.png`
+                  hovered ? `${taskRoom.src}-open.png` : `${taskRoom.src}.png`
                 }
-                alt={card.alt}
-                className={`${isMediumScreen ? "w-[75px]" : "w-[150px]"}`}
+                className={`${isMediumScreen ? "w-[80px] mb-5" : "w-[130px] mb-20"}`}
                 transition={{ duration: 0.3 }}
-                whileHover={{
-                  scale: 0.95,
-                  boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.2)",
-                }}
               />
-              <span
-                className={`text-${
-                  isMediumScreen ? "md mt-0" : "xl mt-2"
-                } text-center text-white outlined-text-white`}
-                style={{ fontFamily: "Arco" }}
-              >
-                {card.alt}
-              </span>
             </Link>
-          </motion.div>
-        ))}
+        </motion.div>
       </div>
 
       {/* Home Button */}
-      <Link to="/home">
-        <motion.div
-          className={`w-${isMediumScreen ? 12 : 16} h-${
-            isMediumScreen ? 12 : 16
-          } bg-black/50 text-white rounded-full flex items-center justify-center cursor-pointer mt-4`}
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          whileHover={{ scale: 0.8 }}
-          transition={{
-            type: "spring",
-            stiffness: 100,
-            damping: 10,
-            duration: 0.5,
-          }}
-        >
+      <div className="absolute bottom-3">
+        <Link to="/home">
           <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5 }}
+            className={`w-${isMediumScreen ? 12 : 16} h-${
+              isMediumScreen ? 12 : 16
+            } bg-black/50 text-white rounded-full flex items-center justify-center cursor-pointer mt-4`}
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            whileHover={{ scale: 0.8 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              duration: 0.5,
+            }}
           >
-            <TiHome
-              className={`w-${isMediumScreen ? 8 : 8} h-${
-                isMediumScreen ? 8 : 8
-              }`}
-            />
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <TiHome
+                className={`w-${isMediumScreen ? 8 : 8} h-${
+                  isMediumScreen ? 8 : 8
+                }`}
+              />
+            </motion.div>
           </motion.div>
-        </motion.div>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 }
 
-export default Games;
+export default TaskRoomEntrance;
