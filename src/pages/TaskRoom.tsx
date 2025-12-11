@@ -3,15 +3,20 @@ import { useScreenSize } from "../layouts/ScreenSizeProvider";
 import { motion } from "framer-motion";
 import { TiHome } from "react-icons/ti";
 
+interface selection{
+  label: string,
+  destination: string,
+  width? : string
+}
 
 function TaskRoom() {
 
-  const selections = [
-    "Content",
-    "Organization",
-    "Vocabulary",
-    "Grammar",
-    "Mechanics",
+  const selections: selection[] = [
+    { label: "Content", destination: "" },
+    { label: "Organization", destination: ""},
+    { label: "Vocabulary", destination: ""},
+    { label: "Grammar", destination: "", width: "35%"},
+    { label: "Mechanics", destination: "", width: "35%" }
   ]
 
   const { isMediumScreen } = useScreenSize();
@@ -22,14 +27,12 @@ function TaskRoom() {
         isMediumScreen ? "p-2" : "p-8"
       }`}>
 
-        <h1 className="text-[#2f2014]" style={{fontFamily: "Arco", fontSize: isMediumScreen? "20px" : "35px"}}><b>Complete the Challenges</b></h1>
-
-        <div className={`flex justify-evenly items-center flex-wrap
-            ${isMediumScreen ? "w-[70dvw] h-[60dvh] mb-30" : "w-[50dvw] h-[50dvh] mb-[200px]"}`}
+        <div className={`flex justify-evenly items-center flex-wrap 
+            ${isMediumScreen ? "w-[70dvw] h-[75dvh] mt-10 me-10" : "w-[65dvw] h-[63dvh] mb-[60px] me-20"}`}
           >
           {selections.map((selection, id) => (
-            <Link to="" key={id}
-              className={`${isMediumScreen? "w-[35%]" : "w-[45%]"}`}
+            <Link to={selection.destination} key={id}
+              className={`${isMediumScreen? "w-[28%]" : `w-[${ selection.width ?? "30%"}]`}`}
               >
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}
@@ -40,10 +43,9 @@ function TaskRoom() {
                     type: "spring",
                   }}
                   whileHover={{ scale: "1.1" }}
-                  style={{ backgroundColor: "rgb(97 73 53)" }}
-                  className={`border-3 border-[#e6bb89] text-center rounded-3xl ${isMediumScreen? "p-3" : "p-5"}`}>
-                    <p style={{fontFamily: "Arco"}} className="text-[#ffffff]">
-                      {selection}
+                  className={`text-center ${isMediumScreen? "p-10" : "p-20"}`}>
+                    <p style={{fontFamily: "Arco", fontSize: `${isMediumScreen? "15px" : "22px"}`}} className="text-[#552b1a]">
+                      {selection.label}
                     </p>
                 </motion.div>
             </Link>

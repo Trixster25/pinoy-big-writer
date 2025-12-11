@@ -33,10 +33,10 @@ body {
 }
 
 .task-room {
-  background-image: url("/taskroom/dashboard.PNG");
+  background-image: url("/taskroom/new_dashboard.png");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center 0px;
 }
 
 .stripes {
